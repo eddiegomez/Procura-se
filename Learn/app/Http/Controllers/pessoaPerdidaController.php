@@ -37,20 +37,19 @@ class pessoaPerdidaController extends Controller
     public function store(Request $request)
     {
     
-         if($request->hasFile('foto')){
-            $file = $request->file('foto');
-            //$name = time().$file->getClientOriginalName();
-            $file ->move(public_path().'/imgs_p_perdidas/',$name);
-        }
+        /*$file = $request->file('foto');
+        $name = time().$file->getClientOriginalName();
+        $file ->move(public_path().'/imgs_p_perdidas/',$name);
+     */
         $p_perdida = new Pessoa_perdida();
         $p_perdida->nome = $request->input('nome');
         $p_perdida->sexo = $request->input('sexo');
         $p_perdida->data_nasc = $request->input('d_nasc');
         $p_perdida->nacionalidade = $request->input('nacionalidade');
         $p_perdida->naturalidade = $request->input('naturalidade');
-        //$p_perdida->foto = $name;
-        //$p_perdida->save();
-        return view('pessoa_ajuda.create');
+       // $p_perdida->foto = $name;
+        $p_perdida->save();
+        return "Gravado com sucesso";
     }
 
     /**
