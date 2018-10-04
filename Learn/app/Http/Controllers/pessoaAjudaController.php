@@ -15,7 +15,8 @@ class pessoaAjudaController extends Controller
      */
     public function index()
     {
-        //
+        $pessoa_ajuda = pessoa_ajuda::all();
+        return view('pessoa_ajuda.index', compact('pessoa_ajuda'));
     }
 
     /**

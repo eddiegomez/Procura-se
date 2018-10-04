@@ -89,7 +89,7 @@
 	@foreach($pessoa_perdida as $p_perdida)
 	<div class="col-lg-3">
 			<div class="card" style="width: 18rem">
-				<img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 100px; height: 100px; background-color: #EFEFEF">
+				<img class="card-img-top rounded-circle" src="/imagesp/{{$p_perdida->foto}}" style=" width: 100px; height: 100px; background-color: #EFEFEF">
 				<div class="card-body">
 
 					<h3 class="card-title">{{$p_perdida->nome}}</h3>

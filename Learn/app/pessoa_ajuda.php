@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa_ajuda extends Model
 {
-    public $primaryKey='id_p_ajuda';
+    public $table = 'pessoa_ajuda';
+    public $timestamps = false;
 }
