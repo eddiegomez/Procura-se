@@ -4,102 +4,100 @@
 
 @section('content')
 
-<nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">User</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-								<p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-									<p class="hidden-lg hidden-md">
-										5 Notifications
-										<b class="caret"></b>
-									</p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-								<p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center d-flex justify-content-center">
+        <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
+    </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+          <li class="nav-item active">
+            <a href="#" class="nav-link">
+            <i class="pe-7s-home"></i>Pagina Inicial</a>
+          </li>
+          <li class="nav-item">
+            <a href="/pessoa_perdida/create/" class="nav-link">
+            <i class="pe-7s-add-user"></i>Pessoa Perdida</a>
+          </li>
+        </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-										Dropdown
-										<b class="caret"></b>
-									</p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
-                        </li>
-						<li class="separator hidden-lg hidden-md"></li>
-                    </ul>
+       
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">Olá, Edson Gomes</span>
+              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
+              <i class="pe-7s-edit"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <a class="dropdown-item p-0">
+                <div class="d-flex border-bottom">
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="pe-7s-edit"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                    <i class="pe-7s-id"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="pe-7s-users"></i>
+                  </div>
                 </div>
+              </a>
+              <a class="dropdown-item mt-2">
+                Editar conta
+              </a>
+              <a class="dropdown-item">
+                Lista de Ajudas
+              </a>
+              <a class="dropdown-item">
+                Sign Out
+              </a>
             </div>
-        </nav>
+          </li>
+        </ul>
+      </div>
+    </nav>
+//
+
+
+
+
 
 <center>
-<div class="row" style="margin-left: 100px; margin-right: 100px; top: 20px; position: relative;">
-	@foreach($pessoa_perdida as $p_perdida)
-	<div class="col-lg-3">
-			<div class="card" style="width: 18rem">
-				<img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 100px; height: 100px; background-color: #EFEFEF">
-				<div class="card-body">
+<div class="row" style="position: relative; margin: 120px">
+    @foreach($pessoa_perdida as $p_perdida)
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem; border-radius: 10px">
+        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
+            <div class="card-body">
+                <h2 class="">{{$p_perdida->nome}}</h2>
+                <h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>
+            </div>  
+            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          
+        </div>
+    </div>
 
-					<h3 class="card-title">{{$p_perdida->nome}}</h3>
-					<h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>
-				</div>	
-				<p><a class="btn btn-info btn-fill" href="" role="button">Detalhes</a></p>			
-			</div>
-	</div>
-	
-	@endforeach
+     <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa perdida</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+             <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
+            {{$p_perdida->nome}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Ver no Mapa</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endforeach
 </div>
 </center>
 @endsection

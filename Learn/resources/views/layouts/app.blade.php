@@ -24,9 +24,40 @@
 
     <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 
+     <!-- plugins:css -->
+    <link rel="stylesheet" href="<?php echo asset('css/materialdesignicons.min.css')?>">
+    <link rel="stylesheet" href="<?php echo asset('css/vendor.bundle.base.css')?>">
+    <link rel="stylesheet" href="<?php echo asset('css/vendor.bundle.addons.css')?>">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="<?php echo asset('css/style.css')?>">
+    <!-- endinject -->
+
 </head>
 <body>
 
 @yield('content')
 </body>
+  <!--   Core JS Files   -->
+    <script src="<?php echo asset('js/jquery.3.2.1.min.js')?>" type="text/javascript"></script>
+    <script src="<?php echo asset('js/bootstrap.min.js')?>" type="text/javascript"></script>
+
+    <!--  Charts Plugin -->
+    <script src="<?php echo asset('js/chartist.min.js')?>"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="<?php echo asset('js/bootstrap-notify.js')?>"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="<?php echo asset('js/light-bootstrap-dashboard.js?v=1.4.0')?>"></script>
+
+    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+    <script src="<?php echo asset('js/demo.js')?>"></script>
+
+
 </html>

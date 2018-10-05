@@ -31,3 +31,5 @@ Route::resource('centro_acolhimento','centroAcolhimentoController');
 Route::resource('user','userController');
 
 
+
+

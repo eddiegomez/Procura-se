@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title','Registo de pessoa perdida')
+
 <style type="text/css">
     .form-group{
         top: 20px;
@@ -12,87 +13,61 @@
 </style>
 @section('content')
 
-<nav class="navbar navbar-default navbar-fixed" style="background-color: azure">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">User</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-dashboard"></i>
-                                <p class="hidden-lg hidden-md">Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-sm hidden-xs"></b>
-                                    <span class="notification hidden-sm hidden-xs">5</span>
-                                    <p class="hidden-lg hidden-md">
-                                        5 Notifications
-                                        <b class="caret"></b>
-                                    </p>
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Notification 1</a></li>
-                                <li><a href="#">Notification 2</a></li>
-                                <li><a href="#">Notification 3</a></li>
-                                <li><a href="#">Notification 4</a></li>
-                                <li><a href="#">Another notification</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                           <a href="">
-                                <i class="fa fa-search"></i>
-                                <p class="hidden-lg hidden-md">Search</p>
-                            </a>
-                        </li>
-                    </ul>
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center d-flex justify-content-center">
+        <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
+    </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+          <li class="nav-item">
+            <a href="/pessoa_perdida/" class="nav-link">
+            <i class="pe-7s-home"></i>Pagina Inicial</a>
+          </li>
+          <li class="nav-item active">
+            <a href="/pessoa_perdida/create/" class="nav-link">
+            <i class="pe-7s-add-user"></i>Pessoa Perdida</a>
+          </li>
+        </ul>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                           <a href="">
-                               <p>Account</p>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-                                        Dropdown
-                                        <b class="caret"></b>
-                                    </p>
-
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                              </ul>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
-                        </li>
-                        <li class="separator hidden-lg hidden-md"></li>
-                    </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          
+          <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">Olá, Edson Gomes</span>
+              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
+              <i class="pe-7s-edit"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <a class="dropdown-item p-0">
+                <div class="d-flex border-bottom">
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="pe-7s-edit"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                    <i class="pe-7s-id"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="pe-7s-users"></i>
+                  </div>
                 </div>
+              </a>
+              <a class="dropdown-item mt-2">
+                Editar conta
+              </a>
+              <a class="dropdown-item">
+                Lista de Ajudas
+              </a>
+              <a class="dropdown-item">
+                Sign Out
+              </a>
             </div>
-        </nav>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-<div class="content" style="left: 150px; position: relative;">
+
+<div class="content" style="left: 180px; position: relative;top: 120PX">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-9">
@@ -101,92 +76,64 @@
                                 <h4 class="title">Registo de Pessoa Perdida</h4>
                             </div>
                             <div class="content">
-                                <form action="/pessoa_perdida">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Apelido</label>
-                                                <input type="text" class="form-control" placeholder="apelido">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
+                                <form method="POST" action="/pessoa_perdida" enctype="multipart/form-data">
+                                        @csrf 
+                                        <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Nome</label>
-                                                <input type="text" class="form-control" placeholder="outros nomes">
+                                                <input type="text" class="form-control" name="nome" placeholder="outros nomes">
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+
+                                        <div class="col-md-4">
+
                                             <div class="form-group">
                                                 <label>Sexo</label>
-                                                <select class="form-control">
+                                                <select class="form-control" name="sexo">
                                                     <option value="M">Masculino</option>
                                                     <option value="F">Feminino</option>
                                                 </select> 
                                             </div>
                                         </div>
+
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Data de Nascimento</label>
-                                                <input type="date" class="form-control" placeholder="DD/MM/AAAA">
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <input type="date" class="form-control" placeholder="DD/MM/AAAA" name="d_nasc">
+
                                             </div>
                                         </div>
                                     
 
-                                    <div class="row">
+                                
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Nacionalidade</label>
+
+                                                <input type="text" class="form-control" placeholder="Nacionalidade"  name="nacionalidade">
+
+                                            </div>
+                                        </div>
+            
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Foto</label>
+                                                <input type="file" name="foto" class="form-control">
+                                            </div>
+                                        </div>
+                                    
+
+                                    
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <label>Informação adicional</label>
+                                                <textarea rows="7" name="obs" class="form-control" placeholder="informação adicional sobre a pessoa perdida"></textarea>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="Edson Gomes">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                  
                                     <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -195,5 +142,8 @@
                 </div>
             </div>
         </div>
+
+       
+
 
 @endsection

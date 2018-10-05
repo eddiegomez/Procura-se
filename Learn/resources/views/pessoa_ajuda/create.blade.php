@@ -11,62 +11,144 @@
 
 </style>
 @section('content')
-<ol class="breadcrumb">
-    <li><a href="/">Pagina inicial</a></li>
-    <li><a>Registo de pessoa perdida</a></li>
-    <li><a class="active">Dados pessoais</a></li>
-</ol>
-
-<form method="post" class="form-group" action="/pessoa_ajuda" enctype="multipart/form-data" style="margin-left: 240px;margin-right: 240px;">
-    <h2>Dados Pessoais</h2>
-    <div class="conteiner">
-        @csrf 
-        <div class="col-sm-12  form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" class="form-control" name="nome" placeholder="nome completo">
-        </div>
-
-        <div class="col-sm-12  form-group">
-            <div class="col-sm-2">
-                <label for="sexo">Sexo:</label>
-            </div>
-            <div class="col-sm-6">
-                <label>M: <input type="radio" name="sexo"></label><br>
-                <label>F: <input type="radio" name="sexo"></label>
-            </div>
-        </div>
-
-        <div class="col-sm-12  form-group">
-            <label for="nome">Data de nascimento:</label>
-            <input type="date" class="form-control" name="d_nasc" placeholder="DD/MM/AAAA">
-        </div>
-
-        <div class="col-sm-12  form-group">
-            <label for="morada">Morada:</label>
-            <input type="text" class="form-control" name="morada" placeholder="Provincia, Bairro, Avenida, Q., casa">
-        </div>
-
-        <div class="col-sm-12  form-group">
-            <label for="naturalidade">Email:</label>
-            <input type="Email" class="form-control" name="email" placeholder="exemplo@dominio.com">
-        </div>
-
-        <div class="col-sm-12  form-group">
-            <label for="usuario">Username:</label>
-            <input type="text" class="form-control" name="usuario" placeholder="ex: user1">
-        </div>
-
-        <div class="col-sm-12  form-group">
-            <label for="senha">Senha:</label>
-            <input type="password" class="form-control" name="senha" placeholder="8 digitos no minimo">
-        </div>
-
-        <div class="col-sm-12  form-group">
-            <input type="password" class="form-control" name="senha" placeholder="confirmação">
-        </div>
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center d-flex justify-content-center">
+        <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
     </div>
-    <input type="submit" class="btn btn-success" style="float: right;position: relative;top: 40px" name="Registar">
-</form>
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+          <li class="nav-item">
+            <a href="/pessoa_perdida/" class="nav-link">
+            <i class="pe-7s-home"></i>Pagina Inicial</a>
+          </li>
+          <li class="nav-item active">
+            <a href="/pessoa_perdida/create/" class="nav-link">
+            <i class="pe-7s-add-user"></i>Registrar-me</a>
+          </li>
+        </ul>
 
+        <ul class="navbar-nav navbar-nav-right">
+          
+          <li class="nav-item dropdown d-none d-xl-inline-block">
+            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+              <span class="profile-text">Olá, Edson Gomes</span>
+              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
+              <i class="pe-7s-edit"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+              <a class="dropdown-item p-0">
+                <div class="d-flex border-bottom">
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="pe-7s-edit"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                    <i class="pe-7s-id"></i>
+                  </div>
+                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                    <i class="pe-7s-users"></i>
+                  </div>
+                </div>
+              </a>
+              <a class="dropdown-item mt-2">
+                Editar conta
+              </a>
+              <a class="dropdown-item">
+                Lista de Ajudas
+              </a>
+              <a class="dropdown-item">
+                Sign Out
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+<div class="content" style="left: 180px; position: relative;top: 120PX">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Registo de Pessoa Perdida</h4>
+                            </div>
+                            <div class="content">
+                                <form method="POST" action="/pessoa_ajuda" enctype="multipart/form-data">
+                                        @csrf 
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>Nome</label>
+                                                <input type="text" class="form-control" name="nome" placeholder="NOME COMPLETO">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Sexo</label>
+                                                <select class="form-control" name="sexo">
+                                                    <option value="M">Masculino</option>
+                                                    <option value="F">Feminino</option>
+                                                </select> 
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Data de Nascimento</label>
+                                                <input type="date" name="d_nasc" class="form-control" placeholder="DD/MM/AAAA">
+                                            </div>
+                                        </div>
+                                    
+
+                                
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Morada</label>
+                                                <input type="text" name="morada" class="form-control" placeholder="Avenida/Rua, bairro, quarteirão, casa">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Telefone</label>
+                                                <input type="number" name="telefone" class="form-control" placeholder="+825">
+                                            </div>
+                                        </div>
+                                    
+
+                                   
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Nome de usuario</label>
+                                                <input type="usuario" class="form-control" placeholder="User1">
+                                            </div>
+                                        </div>
+                                   
+
+                                    
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Senha</label>
+                                                <input type="password" name="senha" class="form-control">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Senha</label>
+                                                <input type="password" name="senhac" class="form-control">
+                                            </div>
+                                        </div>
+                                             
+
+                                  
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @endsection

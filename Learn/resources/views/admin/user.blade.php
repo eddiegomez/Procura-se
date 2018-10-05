@@ -16,16 +16,10 @@
             </div>
 
             <ul class="nav">
-                <li>
-                    <a href="dashboard.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
                 <li class="active">
                     <a href="user.html">
                         <i class="pe-7s-add-user"></i>
-                        <p>Pessoa Perdida</p>
+                        <p>Pessoas Perdidas</p>
                     </a>
                 </li>
                 <li>

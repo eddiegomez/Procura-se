@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace Laravel_Learn\Http\Controllers;
 
