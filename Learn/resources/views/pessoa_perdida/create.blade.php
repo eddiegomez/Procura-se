@@ -101,20 +101,21 @@
                                 <h4 class="title">Registo de Pessoa Perdida</h4>
                             </div>
                             <div class="content">
-                                <form action="/pessoa_perdida">
+                                <form action="/pessoa_perdida" method="POST" class="form-group" enctype="multipart/form-data" >
+                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Apelido</label>
-                                                <input type="text" class="form-control" placeholder="apelido">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
                                                 <label>Nome</label>
-                                                <input type="text" class="form-control" placeholder="outros nomes">
+                                                <input type="text" class="form-control" placeholder="Nome" name="nome">
                                             </div>
                                         </div>
+                                        {{--<div class="col-md-6">--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>Nome</label>--}}
+                                                {{--<input type="text" class="form-control" placeholder="outros nomes">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Sexo</label>
@@ -127,7 +128,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Data de Nascimento</label>
-                                                <input type="date" class="form-control" placeholder="DD/MM/AAAA">
+                                                <input type="date" class="form-control" placeholder="DD/MM/AAAA" name="d_nasc">
                                             </div>
                                         </div>
                                     </div>
@@ -135,14 +136,14 @@
                                 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                                <label>Nacionalidade</label>
+                                                <input type="text" class="form-control" placeholder="Nacionalidade"  name="nacionalidade">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                                <label>Morada</label>
+                                                <input type="text" class="form-control" placeholder="Morada"  name="morada">
                                             </div>
                                         </div>
                                     
@@ -150,43 +151,44 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Address</label>
-                                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                                <label>Foto</label>
+                                                <input type="file" class="form-control" name="filename">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>City</label>
-                                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Country</label>
-                                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Postal Code</label>
-                                                <input type="number" class="form-control" placeholder="Edson Gomes">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>City</label>--}}
+                                                {{--<input type="text" class="form-control" placeholder="City" value="Mike">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>Country</label>--}}
+                                                {{--<input type="text" class="form-control" placeholder="Country" value="Andrew">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-md-4">--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>Postal Code</label>--}}
+                                                {{--<input type="number" class="form-control" placeholder="Edson Gomes">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>About Me</label>
-                                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col-md-12">--}}
+                                            {{--<div class="form-group">--}}
+                                                {{--<label>About Me</label>--}}
+                                                {{--<textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    <br>
 
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Gravar</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
