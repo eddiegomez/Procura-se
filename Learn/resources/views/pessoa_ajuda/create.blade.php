@@ -70,7 +70,7 @@
                     <div class="col-md-9">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Registo de Pessoa Perdida</h4>
+                                <h4 class="title">Registo</h4>
                             </div>
                             <div class="content">
                                 <form method="POST" action="/pessoa_ajuda" enctype="multipart/form-data">
@@ -78,14 +78,14 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Nome</label>
-                                                <input type="text" class="form-control" name="nome" placeholder="NOME COMPLETO">
+                                                <input type="text" class="form-control" name="nome" placeholder="nome completo ">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Sexo</label>
-                                                <select class="form-control" name="sexo">
+                                                <select class="form-control" name="sexo" style="height: 35px">
                                                     <option value="M">Masculino</option>
                                                     <option value="F">Feminino</option>
                                                 </select> 
@@ -103,23 +103,57 @@
                                 
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Morada</label>
-                                                <input type="text" name="morada" class="form-control" placeholder="Avenida/Rua, bairro, quarteirão, casa">
+                                                <label>Email</label>
+                                                <input type="text" name="email" class="form-control" placeholder="exemplo@email.com">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Telefone</label>
+                                                <input type="number" name="telefone" class="form-control" placeholder="+258">
+                                            </div>
+                                        </div>
+                                    
+                                       <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>País</label>
+                                                <input type="text" name="pais" class="form-control" placeholder="pais de residencia">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Provincia</label>
+                                                <input type="text" name="Provincia" class="form-control" placeholder="provincia">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Telefone</label>
-                                                <input type="number" name="telefone" class="form-control" placeholder="+825">
+                                                <label>Bairro</label>
+                                                <input type="text" name="telefone" class="form-control" placeholder="bairro">
                                             </div>
                                         </div>
-                                    
+
+                                        <div class="col-md-10">
+                                            <div class="form-group">
+                                                <label>Avenida</label>
+                                                <input type="text" name="avenida" class="form-control" placeholder="avenida ou rua">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>Casa</label>
+                                                <input type="number" name="casa" class="form-control" placeholder="N* da casa">
+                                            </div>
+                                        </div>
 
                                    
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Nome de usuario</label>
-                                                <input type="usuario" class="form-control" placeholder="User1">
+                                                <input type="usuario" name="usuario" class="form-control" placeholder="User1">
                                             </div>
                                         </div>
                                    
@@ -150,5 +184,5 @@
                 </div>
             </div>
         </div>
-
+    
 @endsection

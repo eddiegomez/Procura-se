@@ -1,10 +1,11 @@
 @extends('layouts.app')
 @section('title','Pagina Inicial')
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/font-awesome.min.css')?>" type="text/css" rel="stylesheet">
 
 @section('content')
 
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);">
     <div class="text-center d-flex justify-content-center">
         <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
     </div>
@@ -56,17 +57,13 @@
         </ul>
       </div>
     </nav>
-//
-
-
-
 
 
 <center>
 <div class="row" style="position: relative; margin: 120px">
     @foreach($pessoa_perdida as $p_perdida)
     <div class="col-sm-4">
-        <div class="card" style="width: 18rem; border-radius: 10px">
+        <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
             <div class="card-body">
                 <h2 class="">{{$p_perdida->nome}}</h2>
@@ -87,8 +84,25 @@
             </button>
           </div>
           <div class="modal-body">
-             <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
-            {{$p_perdida->nome}}
+            <div>
+              <img class="card-img-top" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
+            </div>
+            <div class=""><CODE><h1>
+                {{$p_perdida->nome}}
+            </h1></CODE>
+            </div>
+            <div class=""><h4>
+                <i class="pe-7s-id"></i> 
+              {{
+                $p_perdida->data_nasc
+              }}
+            </h4>
+            </div>
+            <div class=""><h4>
+                {{$p_perdida->created_at}}
+            </h4>
+            </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -100,4 +114,5 @@
     @endforeach
 </div>
 </center>
+<script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
 @endsection

@@ -8,8 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
 
+    public $primaryKey='id_usuario';
     /**
      * The attributes that are mass assignable.
      *

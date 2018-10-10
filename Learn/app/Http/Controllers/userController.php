@@ -4,6 +4,7 @@ namespace Laravel_Learn\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel_Learn\User;
+use Laravel_Learn\Pessoa_perdida;
 
 class userController extends Controller
 {
@@ -14,7 +15,8 @@ class userController extends Controller
      */
     public function index()
     {
-        return view('admin.user');
+        $pessoa_perdida = Pessoa_perdida::all();
+        return view('admin.user', compact('pessoa_perdida'));
     }
 
     /**
