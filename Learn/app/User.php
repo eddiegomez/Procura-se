@@ -29,4 +29,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function guardar_user($request){
+        $usr = new user();
+        $usr->usuario = $request->input('usuario');
+        $usr->senha = $request->input('senha');
+        $usr->tipo = 'pessoa_ajuda';
+        $usr->save();
+        return $usr->id_usuario;
+    }
 }

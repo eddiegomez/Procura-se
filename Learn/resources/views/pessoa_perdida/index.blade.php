@@ -36,7 +36,7 @@
                     <i class="pe-7s-edit"></i>
                   </div>
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="pe-7s-id"></i>
+                    <i class="pe-7s-id"></i> 
                   </div>
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center">
                     <i class="pe-7s-users"></i>

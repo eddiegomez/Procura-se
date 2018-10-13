@@ -16,43 +16,30 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
-                    <a href="user.html">
+                <li>
+                    <a href="/user">
                         <i class="pe-7s-add-user"></i>
                         <p>Pessoas Perdidas</p>
                     </a>
                 </li>
-                <li>
-                    <a href="table.html">
+                <li class="active">
+                    <a href="/centro">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Registar Centros</p>
                     </a>
                 </li>
                 <li>
                     <a href="typography.html">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                        <p>Usuarios</p>
                     </a>
                 </li>
                 <li>
                     <a href="icons.html">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
+                        <p>Estatístias</p>
                     </a>
                 </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-				
             </ul>
     	</div>
         <footer class="footer">

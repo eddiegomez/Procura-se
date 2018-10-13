@@ -30,6 +30,10 @@ Route::resource('centro_acolhimento','centroAcolhimentoController');
 
 Route::resource('user','userController');
 
+Route::resource('centro','centroAcolhimentoController');
+
+Route::resource('responsavel','responsavelCentroController');
+
 
 
 

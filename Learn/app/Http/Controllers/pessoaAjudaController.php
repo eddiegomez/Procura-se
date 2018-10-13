@@ -37,7 +37,8 @@ class pessoaAjudaController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $user = new user();
+
         $p_ajuda = new pessoa_ajuda();
         $p_ajuda->nome = $request->input('nome');
         $p_ajuda->sexo = $request->input('sexo');
@@ -45,20 +46,10 @@ class pessoaAjudaController extends Controller
         $p_ajuda->morada = $request->input('morada');
         $p_ajuda->telefone = $request->input('telefone');
         $p_ajuda->email = $request->input('email');
-        $p_ajuda->id_usuario = $this->guardar($request);
+        $p_ajuda->id_usuario = $user->guardar($request);
         $p_ajuda->save();
         return redirect()->route('pessoa_perdida.index')->with('message', ' created successfully!');
     
-    }
-
-
-    public function guardar($request){
-        $usr = new user();
-        $usr->usuario = $request->input('usuario');
-        $usr->senha = $request->input('senha');
-        $usr->tipo = 'pessoa_ajuda';
-        $usr->save();
-        return $usr->id_usuario;
     }
 
     /**
