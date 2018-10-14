@@ -61,14 +61,7 @@
 <br> <br> <br> <br>
 
 </div>
-
-
-<center>
-
-
-
-    <form  method="POST" action="{{URL::to('/search')}}"role="search">
-        {{--<form  method="POST" action="/pessoa_perdida"role="search">--}}
+ <form  method="POST" action="{{URL::to('/search')}}"role="search">
         @csrf
         <div class="col-md-auto" >
             <div class="form-group">
@@ -82,25 +75,25 @@
     </form>
 
 <center>
-<div class="row" style="position: relative; margin: 120px">
-    @foreach($pessoa_perdida as $p_perdida)
-    <div class="col-sm-4">
-        <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
-        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
-            <div class="card-body">
-                <h2 class="">{{$p_perdida->nome}}</h2>
-                <h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>
-            </div>  
-            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          
+{{--<div class="row" style="position: relative; margin: 120px">--}}
+    {{--@foreach($pessoa_perdida as $p_perdida)--}}
+    {{--<div class="col-sm-4">--}}
+        {{--<div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">--}}
+        {{--<img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">--}}
+            {{--<div class="card-body">--}}
+                {{--<h2 class="">{{$p_perdida->nome}}</h2>--}}
+                {{--<h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>--}}
+            {{--</div>  --}}
+            {{--<p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          --}}
 
-        </div>
+        {{--</div>--}}
 
 
 
         <div class="row" style="position: relative; margin: 120px">
             @foreach($pessoa_perdida as $p_perdida)
                 <div class="col-sm-4">
-                    <div class="card" style="width: 18rem; border-radius: 10px">
+                    <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
                         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
                         <div class="card-body">
                             <h2 class="">{{$p_perdida->nome}}</h2>
@@ -135,9 +128,10 @@
             @endforeach
 
         </div>
+
     </div>
 </div>
-</center>
+
 
 </center>
 <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
