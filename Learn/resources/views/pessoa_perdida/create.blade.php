@@ -69,7 +69,7 @@
     </nav>
 
 
-<div class="content" style="left: 180px; position: relative;top: 120PX">
+<div class="content" style="left: 180px; position: relative;top: 120PX" style="background-image: url("/images/register.jpg");">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-9">
@@ -94,7 +94,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Nome</label>
-                                                <input type="text" class="form-control" name="nome" placeholder="outros nomes">
+                                                <input type="text" class="form-control" name="nome" placeholder="nome completo">
                                             </div>
                                         </div>
 
@@ -102,7 +102,7 @@
 
                                             <div class="form-group">
                                                 <label>Sexo</label>
-                                                <select class="form-control" name="sexo">
+                                                <select class="form-control" name="sexo" style="height: 34px">
                                                     <option value="M">Masculino</option>
                                                     <option value="F">Feminino</option>
                                                 </select> 
@@ -128,11 +128,20 @@
 
                                             </div>
                                         </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>naturalidade</label>
+
+                                                <input type="text" class="form-control" placeholder="naturalidade"  name="naturalidade">
+
+                                            </div>
+                                        </div>
             
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Foto</label>
-                                                <input type="file" name="foto" class="form-control">
+                                                <input type="file" name="foto" class="form-control" style="height: 43px">
                                             </div>
                                         </div>
                                     
@@ -145,7 +154,7 @@
                                             </div>
                                         </div>
                                   
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Gravar</button>
 
                                     <div class="clearfix"></div>
                                 </form>

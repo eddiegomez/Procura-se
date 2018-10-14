@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel_Learn\Http\Requests\StorePessoaPerdida;
 use Laravel_Learn\pessoa_perdida;
 use Laravel_Learn\Caso;
+use Illuminate\Support\Facades\DB;
 
 class pessoaPerdidaController extends Controller
 {
@@ -16,6 +17,8 @@ class pessoaPerdidaController extends Controller
      */
     public function index()
     {
+        //$pessoa_perdida = DB::table('pessoa_perdida')->get();   
+        //return view('pessoa_perdida.index', ['pessoa_perdida' => $pessoa_perdida]);
         $pessoa_perdida = Pessoa_perdida::all();
         return view('pessoa_perdida.index', compact('pessoa_perdida'));
     }
@@ -44,9 +47,6 @@ class pessoaPerdidaController extends Controller
             $file->move(public_path().'/imgs_p_perdidas/',$name);
         }
      
-
- 
-
         $p_perdida = new Pessoa_perdida();
         $p_perdida->nome = $request->input('nome');
         $p_perdida->sexo = $request->input('sexo');
@@ -56,26 +56,21 @@ class pessoaPerdidaController extends Controller
         $p_perdida->foto = $name;
         $p_perdida->save();
         $id=$p_perdida->id_p_perdida;
-        $caso = new Caso();
-        $caso->id_pessoa_perdida=$id;
-        $caso->id_pessoa_ajuda=2;
-        $caso->id_localizacao=1;
-        $caso->save();
-//        return "Gravado com sucesso";
+        $this->gravar_caso($id);
 
         return redirect()->route('pessoa_perdida.index')->with('message', ' created successfully!');
+
+
+
     }
 
-    /*public function gravar_caso($id)
+    public function gravar_caso($id)
     {
-        $caso = new Caso();
-        $caso->id_pessoa_perdida=$id;
-        $caso->id_pessoa_ajuda=2;
-        $caso->id_localizacao=1;
-        $caso->save();
-        return "Gravado com sucesso";
+        //
+
+        return $id;
     }
-*/
+
     /**
      * Display the specified resource.
      *

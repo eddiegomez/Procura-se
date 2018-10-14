@@ -34,6 +34,10 @@ Route::resource('user','userController');
 Route::post('/search', 'pessoaPerdidaController@pesquisar');
 
 
+Route::resource('centro','centroAcolhimentoController');
+
+Route::resource('responsavel','responsavelCentroController');
+
 
 
 

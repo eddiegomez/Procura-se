@@ -24,7 +24,7 @@ class centroAcolhimentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create_centro');
     }
 
     /**
@@ -35,7 +35,19 @@ class centroAcolhimentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $centro = new centro_acolhimento();
+        $centro->designacao = $request->input('designacao');
+        $centro->tipo = $request->input('tipo');
+        $centro->capacidade = $request->input('capacidade');
+        $centro->email = $request->input('email');
+        $centro->celular = $request->input('celular');
+        $centro->provincia = $request->input('provincia');
+        $centro->avenida = $request->input('avenida');
+        $centro->numero = $request->input('nr');
+        $centro->obs = $request->input('obs');
+        $centro->id_localizacao = 1;
+        $centro->save();
+        return view('admin.create_centro')->with('message', ' created successfully!');
     }
 
     /**

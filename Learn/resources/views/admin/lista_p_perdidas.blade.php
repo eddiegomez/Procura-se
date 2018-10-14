@@ -18,51 +18,27 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
-                        <i class="pe-7s-graph"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="user.html">
-                        <i class="pe-7s-user"></i>
-                        <p>User Profile</p>
+                    <a href="/user">
+                        <i class="pe-7s-add-user"></i>
+                        <p>Pessoas Perdidas</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="table.html">
+                    <a href="/centro">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Registar Centros</p>
                     </a>
                 </li>
                 <li>
                     <a href="typography.html">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                        <p>Usuarios</p>
                     </a>
                 </li>
                 <li>
                     <a href="icons.html">
                         <i class="pe-7s-science"></i>
-                        <p>Icons</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="maps.html">
-                        <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="notifications.html">
-                        <i class="pe-7s-bell"></i>
-                        <p>Notifications</p>
-                    </a>
-                </li>
-				<li class="active-pro">
-                    <a href="upgrade.html">
-                        <i class="pe-7s-rocket"></i>
-                        <p>Upgrade to PRO</p>
+                        <p>Estatístias</p>
                     </a>
                 </li>
             </ul>
