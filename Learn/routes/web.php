@@ -1,4 +1,6 @@
      <?php
+     use Illuminate\Support\Facades\Input;
+     use Laravel_Learn\Pessoa_perdida;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,8 @@ Route::resource('pessoa_ajuda','pessoaAjudaController');
 Route::resource('centro_acolhimento','centroAcolhimentoController');
 
 Route::resource('user','userController');
+Route::post('/search', 'pessoaPerdidaController@pesquisar');
+
 
 
 

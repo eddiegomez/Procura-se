@@ -14,6 +14,7 @@
                         <th>Data de Nascimento</th>
                         <th>Morada</th>
                         <th>Telefone</th>
+                        <th>Email</th>
                         <th class="actions">Ações</th>
                     </tr>
                     </thead>
@@ -27,10 +28,11 @@
                             <td>{{$loc ->data_nasc}}</td>
                             <td>{{$loc ->morada}}</td>
                             <td>{{$loc ->telefone}}</td>
+                            <td>{{$loc ->email}}</td>
                             <td class="actions">
                                 {{--<a class="btn btn-success btn-xs" href="view.html">Visualizar</a>--}}
-                                <a class="btn btn-warning btn-xs" href="edit.html">Editar</a>
-                                <a class="btn btn-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
+                                <a class="btn btn-warning" href="{{action('pessoaAjudaController@edit',$loc['id'])}}">Editar</a>
+                                <a class="btn btn-danger "  href="#" data-toggle="modal" data-target="#delete-modal">Excluir</a>
                             </td>
                         </tr>
                         </tbody>

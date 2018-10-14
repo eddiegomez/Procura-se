@@ -57,47 +57,68 @@
       </div>
     </nav>
 //
+<br> <br> <br> <br>
 
-
-
+</div>
 
 
 <center>
-<div class="row" style="position: relative; margin: 120px">
-    @foreach($pessoa_perdida as $p_perdida)
-    <div class="col-sm-4">
-        <div class="card" style="width: 18rem; border-radius: 10px">
-        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
-            <div class="card-body">
-                <h2 class="">{{$p_perdida->nome}}</h2>
-                <h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>
-            </div>  
-            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          
-        </div>
-    </div>
 
-     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa perdida</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-             <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
-            {{$p_perdida->nome}}
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Ver no Mapa</button>
-          </div>
+
+    <form  method="POST" action="{{URL::to('/search')}}"role="search">
+        {{--<form  method="POST" action="/pessoa_perdida"role="search">--}}
+        @csrf
+        <div class="col-md-auto" >
+            <div class="form-group">
+                <label>Pesquisar</label>
+                <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
+                <button type="submit" class="btn btn-fill">pesquisar</button>
+
+            </div>
+
         </div>
-      </div>
-    </div>
-    @endforeach
-</div>
+    </form>
+    {{--@if(isset($pessoa_perdida))--}}
+        {{--<p>O resultado e <b>{{$query}}</b> </p>--}}
+
+        <div class="row" style="position: relative; margin: 120px">
+            @foreach($pessoa_perdida as $p_perdida)
+                <div class="col-sm-4">
+                    <div class="card" style="width: 18rem; border-radius: 10px">
+                        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
+                        <div class="card-body">
+                            <h2 class="">{{$p_perdida->nome}}</h2>
+                            {{--<h5 class="card-text">Idade: {{$p_perdida->data_nasc $user->age()}}</h5>--}}
+                            <h5 class="card-text">Idade: {{$p_perdida->age()}}</h5>
+                        </div>
+                        <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa perdida</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
+                                {{$p_perdida->nome}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="button" class="btn btn-primary">Ver no Mapa</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+    {{--@endif--}}
 </center>
 @endsection

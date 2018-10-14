@@ -103,6 +103,7 @@ return [
     | will not be safe. Please do this before deploying an application!
     |
     */
+    'Carbon' => 'Carbon\Carbon',
 
     'key' => env('APP_KEY'),
 

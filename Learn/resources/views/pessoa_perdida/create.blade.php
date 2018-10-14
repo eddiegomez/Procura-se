@@ -13,7 +13,9 @@
 </style>
 @section('content')
 
-<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+
+
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center d-flex justify-content-center">
         <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
     </div>
@@ -72,9 +74,20 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                             <div class="header">
                                 <h4 class="title">Registo de Pessoa Perdida</h4>
                             </div>
+
                             <div class="content">
                                 <form method="POST" action="/pessoa_perdida" enctype="multipart/form-data">
                                         @csrf 

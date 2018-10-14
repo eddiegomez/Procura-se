@@ -118,8 +118,8 @@
                                    
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Nome de usuario</label>
-                                                <input type="usuario" class="form-control" placeholder="User1">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control" placeholder="email" name="email">
                                             </div>
                                         </div>
                                    
@@ -127,21 +127,21 @@
                                     
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Senha</label>
-                                                <input type="password" name="senha" class="form-control">
+                                                <label>Usuario</label>
+                                                <input type="usuario" name="usuario" class="form-control">
                                             </div>
                                         </div>
                                     
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Senha</label>
-                                                <input type="password" name="senhac" class="form-control">
+                                                <input type="password" name="senha" class="form-control">
                                             </div>
                                         </div>
                                              
 
                                   
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">Save Profile</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

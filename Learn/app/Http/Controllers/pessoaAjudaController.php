@@ -41,16 +41,20 @@ class pessoaAjudaController extends Controller
         $usr->usuario = $request->input('usuario');
         $usr->senha = $request->input('senha');
         $usr->tipo = 'pessoa_ajuda';
-        $usr->save();
-/*
+//        $usr->save();
+
         $p_ajuda = new pessoa_ajuda();
         $p_ajuda->nome = $request->input('nome');
+        $p_ajuda->sexo = $request->input('sexo');
+        $p_ajuda->data_nasc = $request->input('d_nasc');
+        $p_ajuda->morada = $request->input('morada');
+        $p_ajuda->telefone = $request->input('telefone');
         $p_ajuda->email = $request->input('email');
         $p_ajuda->id_usuario = 1;
-        $p_ajuda->password = $request->input('senha');
+//        $p_ajuda->password = $request->input('senha');
         $p_ajuda->save();
         return 'saved';
-    */
+
     }
 
     /**
@@ -72,7 +76,8 @@ class pessoaAjudaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $p_ajuda = \Laravel_Learn\Pessoa_ajuda::find($id);
+        return view('edit',compact('p_ajuda,id'));
     }
 
     /**
@@ -84,7 +89,22 @@ class pessoaAjudaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usr = new user();
+        $usr->usuario = $request->input('usuario');
+        $usr->senha = $request->input('senha');
+        $usr->tipo = 'pessoa_ajuda';
+
+        $p_ajuda = new pessoa_ajuda();
+        $p_ajuda->nome = $request->input('nome');
+        $p_ajuda->sexo = $request->input('sexo');
+        $p_ajuda->data_nasc = $request->input('d_nasc');
+        $p_ajuda->morada = $request->input('morada');
+        $p_ajuda->telefone = $request->input('telefone');
+        $p_ajuda->email = $request->input('email');
+        $p_ajuda->id_usuario = 1;
+        $p_ajuda->save();
+        return 'saved';
+
     }
 
     /**
