@@ -5,6 +5,7 @@ namespace Laravel_Learn\Http\Controllers;
 use Illuminate\Http\Request;
 use Laravel_Learn\Http\Requests\StorePessoaPerdida;
 use Laravel_Learn\pessoa_perdida;
+use Illuminate\Support\Facades\Storage;
 use Laravel_Learn\Caso;
 use Illuminate\Support\Facades\DB;
 
@@ -17,10 +18,10 @@ class pessoaPerdidaController extends Controller
      */
     public function index()
     {
-        //$pessoa_perdida = DB::table('pessoa_perdida')->get();   
-        //return view('pessoa_perdida.index', ['pessoa_perdida' => $pessoa_perdida]);
-        $pessoa_perdida = Pessoa_perdida::all();
-        return view('pessoa_perdida.index', compact('pessoa_perdida'));
+//        $pessoa_perdida = Pessoa_perdida::all();
+
+        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida', 'desc')->paginate(6);
+        return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
     /**
@@ -115,41 +116,16 @@ class pessoaPerdidaController extends Controller
     {
         //
     }
-    public function search()
-    {
-//        // Gets the query string from our form submission
-//        $query = Request::input('pesquisar');
-//        // Returns an array of articles that have the query string located somewhere within
-//        // our articles titles. Paginates them so we can break up lots of search results.
-//        $articles = Pessoa_perdida::where('nome', 'LIKE', '%' . $query . '%')->get()->paginate(10);
-//
-//        // returns a view and passes the view the list of articles and the original query.
-//        return view('pessoa_perdida.index', compact('articles', 'query'));
-//
-        // outro methodo
-        $pesquisar = Input::get('pesquisar');
-        if($pesquisar!=""){
-            $p_perdida = Pessoa_perdida::where('nome','LIKE','%' .$pesquisar .'%')
-                ->orwhere('nacionalidade', 'LIKE', '%' .$pesquisar .'%')
-                ->get();
-            if(count($p_perdida)>0)
-                return view('pessoa_perdida.index')->withDetails($p_perdida)->withQuery($pesquisar);
-        }
-        return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
-    }
     public function pesquisar(Request $request)
     {
         $pesquisar = $request->input('pesquisar');
 
         if($pesquisar){
-
             $pessoa_perdida = Pessoa_perdida::where('nome','LIKE','%'. $pesquisar . '%')
-//        $p_perdida = \Laravel_Learn\Pessoa_perdida::where('nome','LIKE','%' .$pesquisar .'%')
                 ->orWhere('nacionalidade', 'LIKE', '%' . $pesquisar .'%')
-
+                ->orWhere('sexo', 'LIKE', '%' . $pesquisar .'%')
                 ->get();
-
-            return view('pessoa_perdida.index', compact('pessoa_perdida', 'pesquisar'));
+            return view('pessoa_perdida.pesquisa', compact('pessoa_perdida', 'pesquisar'));
         }
         return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
     }
