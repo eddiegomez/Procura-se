@@ -58,6 +58,21 @@
         </ul>
       </div>
     </nav>
+<br> <br> <br>
+
+
+<form  method="POST" action="{{URL::to('/search')}}"role="search">
+    @csrf
+    <div class="col-md-auto" >
+        <div class="form-group">
+            <label>Pesquisar</label>
+            <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
+            <button type="submit" class="btn btn-fill">pesquisar</button>
+
+        </div>
+
+    </div>
+</form>
 
 
 <center>
@@ -69,13 +84,13 @@
             <div class="card-body">
                 <h2 class="">{{$p_perdida->nome}}</h2>
                 <h5 class="card-text">Idade: {{$p_perdida->age()}}</h5>
-            </div>  
-            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          
+            </div>
+            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter{{$p_perdida->nome}}" role="button">Detalhes</a></p>
         </div>
     </div>
 
      <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%; position: ">
+    <div class="modal fade"id="exampleModalCenter{{$p_perdida->nome}}"tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%; position: ">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -86,7 +101,7 @@
           </div>
           <div class="modal-body">
             <div>
-              <img class="card-img-top" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
+              <img class="card-img-top"  src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
             </div>
             <div class=""><CODE><h1>
                 {{$p_perdida->nome}}
@@ -113,6 +128,11 @@
       </div>
     </div>
     @endforeach
+        <br>
+        <div style=" margin-left: 500px">
+            {{$pessoa_perdida->links()}}
+        </div>
+
 </div>
 </center>
 <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
