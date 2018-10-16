@@ -68,7 +68,7 @@
         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
             <div class="card-body">
                 <h2 class="">{{$p_perdida->nome}}</h2>
-                <h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>
+                <h5 class="card-text">Idade: {{$p_perdida->age()}}</h5>
             </div>  
             <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          
         </div>
