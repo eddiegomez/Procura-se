@@ -60,7 +60,6 @@
 
 <br> <br> <br> <br>
 
-<<<<<<< HEAD
 </div>
  <form  method="POST" action="{{URL::to('/search')}}"role="search" >
         @csrf
@@ -119,7 +118,6 @@
             {{$pessoa_perdida->links()}}
             </div>
 
-=======
 <center>
 <div class="row" style="position: relative; margin: 120px">
     @foreach($pessoa_perdida as $p_perdida)
@@ -170,7 +168,6 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="button" class="btn btn-primary">Ver no Mapa</button>
           </div>  
->>>>>>> 8a843e429c14dcbea32c64e8729e8532f724e0a7
         </div>
 
     </div>
@@ -179,12 +176,5 @@
 
 </center>
 <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
-<script type="text/javascript">
-    $('#exampleModalCenter').on('show.bs.modal', function(event){
-      var button = $(event.relatedTarget)
-      var recipient = button.data('whatever')
-      var modal = $(this)
-      modal.find('#tm').val("sdfsdfsdf")
-    })
-</script>
+
 @endsection

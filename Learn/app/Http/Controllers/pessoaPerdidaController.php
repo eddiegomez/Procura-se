@@ -42,19 +42,16 @@ class pessoaPerdidaController extends Controller
      */
     public function store(StorePessoaPerdida $request)
     {
-<<<<<<< HEAD
+
         if ($request->hasFile('foto')){
             $file = $request->file('foto');
             $name = time().$file->getClientOriginalName();
             $file->move(public_path().'/imgs_p_perdidas/',$name);
         }
      
-=======
-    
        $file = $request->file('foto');//busca a imagem de um input do tipo file
        $name = time().$file->getClientOriginalName();//concatena a data e a hora actual ao nome da imagem para que n hajam conflitos
        $file->move(public_path().'/imgs_p_perdidas/',$name);//efectua uma copia da imagem a pasta do projecto     
->>>>>>> 8a843e429c14dcbea32c64e8729e8532f724e0a7
         $p_perdida = new Pessoa_perdida();
         $p_perdida->nome = $request->input('nome');
         $p_perdida->sexo = $request->input('sexo');
