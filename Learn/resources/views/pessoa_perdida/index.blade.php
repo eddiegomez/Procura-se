@@ -31,7 +31,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
+                <div class="d-flex border-bottom">//
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center">
                     <i class="pe-7s-edit"></i>
                   </div>
