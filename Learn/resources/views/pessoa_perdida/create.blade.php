@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
             
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Foto</label>
                                                 <input type="file" name="foto" class="form-control" style="height: 43px">
