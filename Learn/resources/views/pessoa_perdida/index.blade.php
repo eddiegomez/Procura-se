@@ -36,7 +36,7 @@
                     <i class="pe-7s-edit"></i>
                   </div>
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="pe-7s-id"></i> 
+                    <i class="pe-7s-id"></i>
                   </div>
                   <div class="py-3 px-4 d-flex align-items-center justify-content-center">
                     <i class="pe-7s-users"></i>
@@ -58,65 +58,6 @@
       </div>
     </nav>
 
-<br> <br> <br> <br>
-
-</div>
- <form  method="POST" action="{{URL::to('/search')}}"role="search" >
-        @csrf
-        <div class="col-md-auto" style="margin-left: 150px" >
-            <div class="form-group">
-                <label>Pesquisar</label>
-                <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
-                <button type="submit" class="btn btn-fill">pesquisar</button>
-
-            </div>
-
-        </div>
-    </form>
-
-<center>
-    <div class="row" style="position: relative; margin: 120px">
-
-            @foreach($pessoa_perdida as $p_perdida)
-                <div class="col-sm-4">
-                    <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
-                        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
-                        <div class="card-body">
-                            <h2 class="">{{$p_perdida->nome}}</h2>
-                            {{--<h5 class="card-text">Idade: {{$p_perdida->data_nasc $user->age()}}</h5>--}}
-                            <h5 class="card-text">Idade: {{$p_perdida->age()}}</h5>
-                        </div>
-                        <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter{{$p_perdida->nome}}" role="button">Detalhes</a></p>
-                    </div>
-                </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter{{$p_perdida->nome}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa perdida</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
-                                {{$p_perdida->nome}}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <button type="button" class="btn btn-primary">Ver Mapa</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-                <br>
-            <div style=" margin-left: 500px">
-            {{$pessoa_perdida->links()}}
-            </div>
 
 <center>
 <div class="row" style="position: relative; margin: 120px">
@@ -125,15 +66,15 @@
         <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
             <div class="card-body">
-                <h2 class="" id="nome">{{$p_perdida->nome}}</h2>
+                <h2 class="">{{$p_perdida->nome}}</h2>
                 <h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>
             </div>  
-            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button" data-whatever="<?php echo $p_perdida['nome'];?>">Detalhes</a></p>          
+            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          
         </div>
     </div>
 
      <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%; position: ">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -146,11 +87,10 @@
             <div>
               <img class="card-img-top" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
             </div>
-            <div class="" id="nome"><CODE><h1>
+            <div class=""><CODE><h1>
                 {{$p_perdida->nome}}
             </h1></CODE>
             </div>
-            <input type="text" id="tm" name="tm">
             <div class=""><h4>
                 <i class="pe-7s-id"></i> 
               {{
@@ -167,14 +107,12 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button type="button" class="btn btn-primary">Ver no Mapa</button>
-          </div>  
+          </div>
         </div>
-
+      </div>
     </div>
+    @endforeach
 </div>
-
-
 </center>
 <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
-
 @endsection
