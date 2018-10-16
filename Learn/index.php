@@ -20,7 +20,7 @@
 
 
     <script src="public/jquery-3.3.1.min.js"></script>
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
@@ -71,7 +71,7 @@
             $.ajax({
                 url: 'public/cod.php',
                 success: function (data ) {
-                    data.quotesArray.forEach()(function (localDaBaseDeDados) {
+                    data.forEach()(function (localDaBaseDeDados) {
                         var point = new google.maps.LatLng(
                             parseFloat(localDaBaseDeDados.lat),
                             parseFloat(localDaBaseDeDados.lng));
@@ -125,9 +125,11 @@
         }
     }
 </script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2_6nTm1l-sEOxACpIV9pWjgAqV-qd2SA&callback=initMap">
-</script>
-
+<!--<script async defer-->
+<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbv-KabC3eIe31J_d_q9O0WwXU5O9Kfjg-->
+<!--&callback=initMap">-->
+<!--</script>-->
+<script async defer src=" https://maps.googleapis.com/maps/api/js?key=AIzaSyCbv-KabC3eIe31J_d_q9O0WwXU5O9Kfjg
+&callback=initMap"  type="text/javascript"></script>
 </body>
 </html>

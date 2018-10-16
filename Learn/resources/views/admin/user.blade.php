@@ -150,7 +150,7 @@
                         <th>Foto</th>
                         <th>Nome</th>
                         <th>Sexo</th>
-                        <th>Data de nascimento</th>
+                        <th>Idade</th>
                         <th>Data de Registo</th>
                       </tr>
                     </thead>
@@ -160,9 +160,9 @@
                         <td>{{$p_perdida->id_p_perdida}}</td>
                         <td class="py-1"><img src="/imgs_p_perdidas/{{$p_perdida->foto}}" alt="image" /></td>
                         <td>{{$p_perdida->nome}}</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>$320,800</td>
+                        <td>{{$p_perdida->sexo}}</td>
+                        <td>{{$p_perdida->age()}}</td>
+                        <td>{{$p_perdida->created_at}}</td>
                       </tr>
                     @endforeach
                     </tbody>

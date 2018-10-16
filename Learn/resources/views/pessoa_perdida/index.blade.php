@@ -61,9 +61,9 @@
 <br> <br> <br> <br>
 
 </div>
- <form  method="POST" action="{{URL::to('/search')}}"role="search">
+ <form  method="POST" action="{{URL::to('/search')}}"role="search" >
         @csrf
-        <div class="col-md-auto" >
+        <div class="col-md-auto" style="margin-left: 150px" >
             <div class="form-group">
                 <label>Pesquisar</label>
                 <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
@@ -75,22 +75,8 @@
     </form>
 
 <center>
-{{--<div class="row" style="position: relative; margin: 120px">--}}
-    {{--@foreach($pessoa_perdida as $p_perdida)--}}
-    {{--<div class="col-sm-4">--}}
-        {{--<div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">--}}
-        {{--<img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">--}}
-            {{--<div class="card-body">--}}
-                {{--<h2 class="">{{$p_perdida->nome}}</h2>--}}
-                {{--<h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>--}}
-            {{--</div>  --}}
-            {{--<p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button">Detalhes</a></p>          --}}
+    <div class="row" style="position: relative; margin: 120px">
 
-        {{--</div>--}}
-
-
-
-        <div class="row" style="position: relative; margin: 120px">
             @foreach($pessoa_perdida as $p_perdida)
                 <div class="col-sm-4">
                     <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
@@ -120,13 +106,17 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <button type="button" class="btn btn-primary">Ver no Mapa</button>
+                                <button type="button" class="btn btn-primary">Ver Mapa</button>
+
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
+                <br>
+            <div style=" margin-left: 500px">
             {{$pessoa_perdida->links()}}
+            </div>
 
         </div>
 
