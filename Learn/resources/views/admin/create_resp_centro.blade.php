@@ -83,7 +83,7 @@
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item active">
-            <a href="#" class="nav-link">
+            <a href="/pessoa_perdida/" class="nav-link">
             <i class="pe-7s-home"></i>Pagina Inicial</a>
           </li>
           <li class="nav-item">

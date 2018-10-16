@@ -60,6 +60,7 @@
 
 <br> <br> <br> <br>
 
+<<<<<<< HEAD
 </div>
  <form  method="POST" action="{{URL::to('/search')}}"role="search" >
         @csrf
@@ -118,6 +119,58 @@
             {{$pessoa_perdida->links()}}
             </div>
 
+=======
+<center>
+<div class="row" style="position: relative; margin: 120px">
+    @foreach($pessoa_perdida as $p_perdida)
+    <div class="col-sm-4">
+        <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
+        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
+            <div class="card-body">
+                <h2 class="" id="nome">{{$p_perdida->nome}}</h2>
+                <h5 class="card-text">Idade: {{$p_perdida->data_nasc}}</h5>
+            </div>  
+            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter" role="button" data-whatever="<?php echo $p_perdida['nome'];?>">Detalhes</a></p>          
+        </div>
+    </div>
+
+     <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa perdida</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <img class="card-img-top" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
+            </div>
+            <div class="" id="nome"><CODE><h1>
+                {{$p_perdida->nome}}
+            </h1></CODE>
+            </div>
+            <input type="text" id="tm" name="tm">
+            <div class=""><h4>
+                <i class="pe-7s-id"></i> 
+              {{
+                $p_perdida->data_nasc
+              }}
+            </h4>
+            </div>
+            <div class=""><h4>
+                {{$p_perdida->created_at}}
+            </h4>
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button type="button" class="btn btn-primary">Ver no Mapa</button>
+          </div>  
+>>>>>>> 8a843e429c14dcbea32c64e8729e8532f724e0a7
         </div>
 
     </div>
@@ -126,4 +179,12 @@
 
 </center>
 <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
+<script type="text/javascript">
+    $('#exampleModalCenter').on('show.bs.modal', function(event){
+      var button = $(event.relatedTarget)
+      var recipient = button.data('whatever')
+      var modal = $(this)
+      modal.find('#tm').val("sdfsdfsdf")
+    })
+</script>
 @endsection
