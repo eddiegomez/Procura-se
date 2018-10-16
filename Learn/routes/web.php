@@ -20,7 +20,6 @@ Route::get('/primeiro', function () {
     return 'Meu primeiro route';
 });
 
-Route::resource('trainers','TrainerController');
 
 Route::resource('pessoa_perdida','pessoaPerdidaController');
 
