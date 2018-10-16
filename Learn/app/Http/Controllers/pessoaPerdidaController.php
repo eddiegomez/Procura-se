@@ -43,7 +43,7 @@ class pessoaPerdidaController extends Controller
     public function store(StorePessoaPerdida $request)
     {
 
-        
+        //hhhhhhhhhhhhhhhhhhhhhhhhhh
         if ($request->hasFile('foto')){
             $file = $request->file('foto');
             $name = time().$file->getClientOriginalName();
