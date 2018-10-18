@@ -31,6 +31,7 @@ Route::resource('centro_acolhimento','centroAcolhimentoController');
 
 Route::resource('user','userController');
 Route::post('/search', 'pessoaPerdidaController@pesquisar');
+     Route::post('/search1', 'pessoaPerdidaController@pesquisar2');
 
 
 Route::resource('centro','centroAcolhimentoController');

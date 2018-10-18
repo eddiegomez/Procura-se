@@ -134,4 +134,17 @@ class pessoaPerdidaController extends Controller
         }
         return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
     }
+    public function pesquisar2(Request $request)
+    {
+        $pesquisar = $request->get('texto');
+
+        if($pesquisar){
+            $pessoa_perdida = Pessoa_perdida::where('nome','LIKE','%'. $pesquisar . '%')
+                ->orWhere('nacionalidade', 'LIKE', '%' . $pesquisar .'%')
+                ->orWhere('sexo', 'LIKE', '%' . $pesquisar .'%')
+                ->get();
+            return response()->json($pessoa_perdida);
+        }
+//        return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
+    }
 }
