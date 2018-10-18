@@ -43,39 +43,27 @@ class pessoaPerdidaController extends Controller
     public function store(StorePessoaPerdida $request)
     {
 
-        if ($request->hasFile('foto')){
-            $file = $request->file('foto');
-            $name = time().$file->getClientOriginalName();
-            $file->move(public_path().'/imgs_p_perdidas/',$name);
-        }
-     
+        
        $file = $request->file('foto');//busca a imagem de um input do tipo file
        $name = time().$file->getClientOriginalName();//concatena a data e a hora actual ao nome da imagem para que n hajam conflitos
        $file->move(public_path().'/imgs_p_perdidas/',$name);//efectua uma copia da imagem a pasta do projecto     
         $p_perdida = new Pessoa_perdida();
-        $p_perdida->nome = $request->input('nome');
+        $p_perdida->nome = $request->input('nome'   );
         $p_perdida->sexo = $request->input('sexo');
         $p_perdida->foto = $name;//aqui mando o nome da img a base de dados
         $p_perdida->data_nasc = $request->input('d_nasc');
         $p_perdida->nacionalidade = $request->input('nacionalidade');
         $p_perdida->naturalidade = $request->input('naturalidade');
-        $p_perdida->foto = $name;
         $p_perdida->save();
         $id=$p_perdida->id_p_perdida;
-        $this->gravar_caso($id);
-
-        return redirect()->route('pessoa_perdida.index')->with('message', ' created successfully!');
-
-
-
+        if(!($id==null)){
+            $caso = new Caso();
+            $caso->gravar_caso($id);
+            return redirect()->route('pessoa_perdida.index')->with('message', ' created successfully!');
+        }else
+            return redirect()->route('pessoa_perdida.index')->with('message', 'Ocorreu um erro ao gravar');
     }
 
-    public function gravar_caso($id)
-    {
-        //
-
-        return $id;
-    }
 
     /**
      * Display the specified resource.
