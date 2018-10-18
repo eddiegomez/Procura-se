@@ -3,6 +3,7 @@
 @section('title','Pagina Inicial')
 <link rel="stylesheet" href="<?php echo asset('css/bootstrap.min.css')?>" type="text/css">
 <link rel="stylesheet" href="<?php echo asset('css/font-awesome.min.css')?>" type="text/css" rel="stylesheet">
+<script src="public/jquery-3.3.1.min.js"></script>
 
 @section('content')
 
@@ -61,12 +62,13 @@
 <br> <br> <br>
 
 
+
 <form  method="POST" action="{{URL::to('/search')}}"role="search">
     @csrf
     <div class="col-md-auto" >
         <div class="form-group">
             <label>Pesquisar</label>
-            <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
+            <input type="text" id="entrada" onkeypress="pesquisar()" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
             <button type="submit" class="btn btn-fill">pesquisar</button>
 
         </div>
@@ -76,12 +78,13 @@
 
 
 <center>
-<div class="row" style="position: relative; margin: 120px">
+<center>
+<div class="row" style="position: relative; margin: 120px" >
     @foreach($pessoa_perdida as $p_perdida)
     <div class="col-sm-4">
         <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
-            <div class="card-body">
+            <div class="card-body" id="pesquisar">
                 <h2 class="">{{$p_perdida->nome}}</h2>
                 <h5 class="card-text">Idade: {{$p_perdida->age()}}</h5>
             </div>
@@ -135,6 +138,37 @@
 
 </div>
 </center>
+
 <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
+<script>
+    function nome() {
+
+        alert('bem vindo');
+
+    }
+
+    function pesquisar(){
+        alert('bem vindo');
+
+        var texto = document.getElementById('entrada').value;
+        $.ajax({
+            url      : '/search1',
+            method   : 'get',
+            data     : { texto : texto },
+            success  : function(response){
+//                for (var i = 0; response.length > i; i++) {
+//                    $('#pesquisar').append(' <h2 class="">'+response[i].nome+'</h2>' + ' <h5 class="card-text">Idade:'+response[i].data_nasc+'</h5>' + '            </div>' + '            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter'+response[i].nome+'" role="button">Detalhes</a></p>');
+//                }
+                alert(response.nome)
+            }
+        });
+
+    }
+
+
+
+</script>
+
+</center>
 @endsection
 
