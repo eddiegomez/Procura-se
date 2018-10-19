@@ -22,15 +22,19 @@ Route::get('/primeiro', function () {
     return 'Meu primeiro route';
 });
 
-
+//Route::get('/localizacao',function (){
+//    return \Laravel_Learn\Localizacao::all();
+//});
 Route::resource('pessoa_perdida','pessoaPerdidaController');
 
 Route::resource('pessoa_ajuda','pessoaAjudaController');
 
 Route::resource('centro_acolhimento','centroAcolhimentoController');
+//Route::resource('localizacao','LocalizacaoController');
 
 Route::resource('user','userController');
 Route::post('/search', 'pessoaPerdidaController@pesquisar');
+Route::get('/localizacao','LocalizacaoController2@index');
      Route::post('/search1', 'pessoaPerdidaController@pesquisar2');
 
 
