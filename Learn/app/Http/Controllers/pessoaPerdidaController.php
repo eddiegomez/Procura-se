@@ -20,7 +20,7 @@ class pessoaPerdidaController extends Controller
     {
 //        $pessoa_perdida = Pessoa_perdida::all();
 
-        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida', 'desc')->paginate(6);
+        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
@@ -43,12 +43,18 @@ class pessoaPerdidaController extends Controller
     public function store(StorePessoaPerdida $request)
     {
 
+        $this->validate($request,[
+            'nome'=>'required',
+            'foto'=>'required'
+        ]);
         
        $file = $request->file('foto');//busca a imagem de um input do tipo file
        $name = time().$file->getClientOriginalName();//concatena a data e a hora actual ao nome da imagem para que n hajam conflitos
        $file->move(public_path().'/imgs_p_perdidas/',$name);//efectua uma copia da imagem a pasta do projecto     
+        
+
         $p_perdida = new Pessoa_perdida();
-        $p_perdida->nome = $request->input('nome'   );
+        $p_perdida->nome = $request->input('nome');
         $p_perdida->sexo = $request->input('sexo');
         $p_perdida->foto = $name;//aqui mando o nome da img a base de dados
         $p_perdida->data_nasc = $request->input('d_nasc');

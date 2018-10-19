@@ -45,3 +45,8 @@ Route::resource('responsavel','responsavelCentroController');
 
 
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
