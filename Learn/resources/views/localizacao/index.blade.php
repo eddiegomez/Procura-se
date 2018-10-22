@@ -22,6 +22,7 @@
     {{--<script src="public/jquery-3.3.1.min.js"></script>--}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+
 </head>
 
 <body>
@@ -69,45 +70,40 @@
 
         function loadLocations() {
             $.ajax({
-                url: '/localizacao',
+                url: '/locations',
                 success: function (data ) {
+                    data.forEach(function (localDaBaseDeDados)
+                    {
+                        var point = new google.maps.LatLng(
+                            parseFloat(localDaBaseDeDados.lat),
+                            parseFloat(localDaBaseDeDados.lng));
+                        destinations.push(point);
 
-                    console.log(data);
+                        var icon = customLabel[localDaBaseDeDados.type] || {};
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: point,
+                            label: icon.label
+                        });
+                        calcularDistancia(point, function (resposta, estado) {
+                            console.log(resposta);
+                            var distancia = resposta.rows[0].elements[0].distance.text;
+                            var tempo = resposta.rows[0].elements[0].duration.text;
+                            var nome = localDaBaseDeDados.nome;
+                            var template =`
+                            <div>
+                                <strong> ${nome} </strong>
+                                <br>
+                                <text>distancia: ${distancia} - ${tempo}</text>
+                            </div>
+                          `;
 
-//                  console
-
-//                    data.forEach()(function (localDaBaseDeDados)
-//                    {
-//                        var point = new google.maps.LatLng(
-//                            parseFloat(localDaBaseDeDados.lat),
-//                            parseFloat(localDaBaseDeDados.lng));
-//                        destinations.push(point);
-//
-//                        var icon = customLabel[localDaBaseDeDados.type] || {};
-//                        var marker = new google.maps.Marker({
-//                            map: map,
-//                            position: point,
-//                            label: icon.label
-//                        });
-//                        calcularDistancia(point, function (resposta, estado) {
-//                            console.log(resposta);
-//                            var distancia = resposta.rows[0].elements[0].distance.text;
-//                            var tempo = resposta.rows[0].elements[0].duration.text;
-//                            var nome = localDaBaseDeDados.name;
-//                            var template =`
-//                            <div>
-//                                <strong> ${nome} </strong>
-//                                <br>
-//                                <text>distancia: ${distancia} - ${tempo}</text>
-//                            </div>
-//                          `;
-//
-//                            marker.addListener('click', function () {
-//                                infoWindow.setContent(template);
-//                                infoWindow.open(map, marker);
-//                            });
-//                        })
-//                    });
+                            marker.addListener('click', function () {
+                                infoWindow.setContent(template);
+                                infoWindow.open(map, marker);
+                            });
+                        })
+                    });
                 },
                 error: function (err) {
                     console.log('houve um erro', err)

@@ -4,7 +4,7 @@
 $servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$dbname = "test";
+$dbname = "procura-se";
 
 
 // Criar Conexao
@@ -22,24 +22,24 @@ function parseToXML($htmlStr)
 }
 
 
-$resultado_markers = "SELECT * FROM markers";
+$resultado_markers = "SELECT * FROM localizacao";
 $resultado_markers = mysqli_query($conn, $resultado_markers);
 
 header("Content-type: text/xml");
 
-echo '<markers>';
+echo '<localizacao>';
 
 while ($row_markes = mysqli_fetch_assoc($resultado_markers)) {
     // Add to XML document node
     echo '<marker ';
-    echo 'name="' . parseToXML($row_markes['name']) . '" ';
-    echo 'address="' . parseToXML($row_markes['address']) . '" ';
+    echo 'nome="' . parseToXML($row_markes['nome']) . '" ';
+    echo 'adress="' . parseToXML($row_markes['adress']) . '" ';
     echo 'lat="' . $row_markes['lat'] . '" ';
     echo 'lng="' . $row_markes['lng'] . '" ';
     echo 'type="' . $row_markes['type'] . '" ';
     echo '/>';
 }
 
-echo '</markers>';
+echo '</localizacao>';
 
 

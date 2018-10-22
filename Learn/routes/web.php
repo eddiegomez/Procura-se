@@ -30,13 +30,17 @@ Route::resource('pessoa_perdida','pessoaPerdidaController');
 Route::resource('pessoa_ajuda','pessoaAjudaController');
 
 Route::resource('centro_acolhimento','centroAcolhimentoController');
-//Route::resource('localizacao','LocalizacaoController');
+Route::resource('localizacao','LocalizacaoController');
 
 Route::resource('user','userController');
 Route::post('/search', 'pessoaPerdidaController@pesquisar');
-Route::get('/localizacao','LocalizacaoController2@index');
-     Route::post('/search1', 'pessoaPerdidaController@pesquisar2');
-
+Route::get('/mapa',function () {
+    return view('localizacao.index');
+});
+Route::get('/locations',function () {
+ return \Laravel_Learn\Localizacao::all();
+});
+Route::post('/search1', 'pessoaPerdidaController@pesquisar2');
 
 Route::resource('centro','centroAcolhimentoController');
 
@@ -50,3 +54,6 @@ Route::resource('responsavel','responsavelCentroController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{id}', function ($id) {
+
+})->name('home');

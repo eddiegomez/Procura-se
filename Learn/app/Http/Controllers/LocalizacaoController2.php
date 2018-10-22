@@ -13,9 +13,8 @@ class LocalizacaoController2 extends Controller
      */
     public function index()
     {
-        $localizacao = Localizacao::all();;
-        $dados = response()->json($localizacao);
-        return view('localizacao.index', compact('dados'));
+        return Localizacao::all();
     }
 
 }
+

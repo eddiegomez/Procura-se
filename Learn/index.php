@@ -19,7 +19,7 @@
     </style>
 
 
-    <script src="public/jquery-3.3.1.min.js"></script>
+<!--    <script src="public/jquery-3.3.1.min.js"></script>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
@@ -69,14 +69,20 @@
 
         function loadLocations() {
             $.ajax({
-                url: 'public/cod.php',
+                url: 'cod.php',
                 success: function (data ) {
 
-                    console.log(data);
+                    console.log(data)
+
+//                    for(var i=0; i<data.length;i++){
+//
+//                        console.log(data[])
+//
+//                    }
 
 //                  console
 
-//                    data.forEach()(function (localDaBaseDeDados)
+                    data.forEach()(function (localDaBaseDeDados)
 //                    {
 //                        var point = new google.maps.LatLng(
 //                            parseFloat(localDaBaseDeDados.lat),
