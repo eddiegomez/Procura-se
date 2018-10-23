@@ -86,10 +86,10 @@
     @foreach($pessoa_perdida as $p_perdida)
     <div class="col-sm-4">
         <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
-        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
+        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
             <div class="card-body" id="pesquisar">
                 <h2 class="">{{$p_perdida->nome}}</h2>
-                <h5 class="card-text">Idade: {{$p_perdida->age()}}</h5>
+                <h5 class="card-text">Idade: </h5>
             </div>
             <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter{{$p_perdida->nome}}" role="button">Detalhes</a></p>
         </div>
@@ -107,7 +107,7 @@
           </div>
           <div class="modal-body">
             <div>
-              <img class="card-img-top"  src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
+              <img class="card-img-top"  src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" style=" width: 400px; height: 400px;">
             </div>
             <div class=""><CODE><h1>
                Este é o  {{$p_perdida->nome}}
@@ -121,7 +121,7 @@
             </h4>
             </div>
             <div class=""><h4>
-              Esta neste Centro ha:   {{$p_perdida->dias()}} dias.
+              Esta neste Centro ha:    dias.
             </h4>
             </div>
             
