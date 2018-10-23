@@ -21,12 +21,13 @@ class pessoaPerdidaController extends Controller
     {
 //      
 
-       $pessoa_perdida = DB::table('pessoa_perdida')
+        $pessoa_perdida = DB::table('pessoa_perdida')
             ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
             ->select('pessoa_perdida.*', 'foto.*')
             ->orderBy('id_p_perdida','desc')
             ->paginate(6);
-        
+
+        //$pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
