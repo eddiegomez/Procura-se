@@ -18,10 +18,8 @@ class pessoaPerdidaController extends Controller
      */
     public function index()
     {
-//        $pessoa_perdida = Pessoa_perdida::all();
+//      
 
-        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
-        return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
     /**
