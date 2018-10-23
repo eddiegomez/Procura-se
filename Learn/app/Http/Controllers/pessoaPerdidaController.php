@@ -21,8 +21,6 @@ class pessoaPerdidaController extends Controller
     {
 //      
 
-<<<<<<< HEAD
-=======
        $pessoa_perdida = DB::table('pessoa_perdida')
             ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
             ->select('pessoa_perdida.*', 'foto.*')
@@ -30,7 +28,6 @@ class pessoaPerdidaController extends Controller
             ->paginate(6);
         
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
->>>>>>> ffe46d750170a6ba0edf15d326b0406400e69dd5
     }
 
     /**
