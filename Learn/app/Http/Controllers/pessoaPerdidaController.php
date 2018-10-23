@@ -7,6 +7,7 @@ use Laravel_Learn\Http\Requests\StorePessoaPerdida;
 use Laravel_Learn\pessoa_perdida;
 use Illuminate\Support\Facades\Storage;
 use Laravel_Learn\Caso;
+use Laravel_Learn\foto;
 use Illuminate\Support\Facades\DB;
 
 class pessoaPerdidaController extends Controller
@@ -20,7 +21,12 @@ class pessoaPerdidaController extends Controller
     {
 //        $pessoa_perdida = Pessoa_perdida::all();
 
-        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
+       $pessoa_perdida = DB::table('pessoa_perdida')
+            ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
+            ->select('pessoa_perdida.*', 'foto.*')
+            ->orderBy('id_p_perdida','desc')
+            ->paginate(6);
+        
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
@@ -43,31 +49,25 @@ class pessoaPerdidaController extends Controller
     public function store(StorePessoaPerdida $request)
     {
 
-        $this->validate($request,[
-            'nome'=>'required',
-            'foto'=>'required'
-        ]);
-        
-       $file = $request->file('foto');//busca a imagem de um input do tipo file
-       $name = time().$file->getClientOriginalName();//concatena a data e a hora actual ao nome da imagem para que n hajam conflitos
-       $file->move(public_path().'/imgs_p_perdidas/',$name);//efectua uma copia da imagem a pasta do projecto     
-        
-
+       
         $p_perdida = new Pessoa_perdida();
+        $foto = new foto();
+
         $p_perdida->nome = $request->input('nome');
         $p_perdida->sexo = $request->input('sexo');
-        $p_perdida->foto = $name;//aqui mando o nome da img a base de dados
         $p_perdida->data_nasc = $request->input('d_nasc');
         $p_perdida->nacionalidade = $request->input('nacionalidade');
         $p_perdida->naturalidade = $request->input('naturalidade');
+        $p_perdida->id_foto = $foto->guardar_foto($request);
         $p_perdida->save();
         $id=$p_perdida->id_p_perdida;
-        if(!($id==null)){
+
+        if(!($id==null)){ 
             $caso = new Caso();
-            $caso->gravar_caso($id);
-            return redirect()->route('pessoa_perdida.index')->with('message', ' created successfully!');
+            $caso->guardar_caso($id);
+            return redirect()->route('pessoa_perdida.create')->with('sucess', ' created successfully!');
         }else
-            return redirect()->route('pessoa_perdida.index')->with('message', 'Ocorreu um erro ao gravar');
+            return redirect()->route('pessoa_perdida.create')->with('message', 'Ocorreu um erro ao gravar');
     }
 
 
