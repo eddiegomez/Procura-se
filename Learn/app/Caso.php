@@ -18,4 +18,17 @@ class Caso extends Model
         $caso->save();
         return $caso->id_caso;
     }
+
+    public function pessoa_perdida(){
+        return $this->belongsTo(Pessoa_perdida::class,'id_pessoa_perdida','id_p_perdida');
+    }
+    public function pessoa_ajuda(){
+        return $this->belongsTo(Pessoa_ajuda::class,'id_pessoa_ajuda','id_p_ajuda');
+
+    }
+    public function localizacao(){
+        return $this->belongsTo(Localizacao::class,'id_localizacao','id_localizacao');
+
+    }
+
 }

@@ -141,4 +141,12 @@ class pessoaPerdidaController extends Controller
         }
 //        return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
     }
+    public function uniao()
+    {
+        $resultados = DB::table('caso')
+            ->join('pessoa_perdida', 'caso.id_pessoa_perdida', '=', 'pessoa_perdida.id_p_perdida')
+            ->join('localizacao', 'localizacao.id_localizacao', '=', 'caso.id_localizacao')
+            ->select('caso.*', 'pessoa_perdida.nome', 'localizacao.*')
+            ->get();
+    }
 }

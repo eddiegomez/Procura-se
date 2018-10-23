@@ -8,4 +8,9 @@ class Localizacao extends Model
 {
     public $table='localizacao';
     public $timestamps=false;
+
+
+    public function caso(){
+        return $this->hasOne(Caso::class);
+    }
 }

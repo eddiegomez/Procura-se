@@ -19,6 +19,22 @@
                     <a href="/pessoa_perdida/create/" class="nav-link">
                         <i class="pe-7s-add-user"></i>Pessoa Perdida</a>
                 </li>
+                <li>
+                    <a>    <form  method="POST" action="{{URL::to('/search')}}"role="search">
+                            @csrf
+                            <div class="col-md-auto" >
+                                <div class="form-group">
+                                    <label>Pesquisar</label>
+                                    <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
+                                    {{--<button type="submit" class="btn btn-fill">pesquisar</button>--}}
+
+                                </div>
+
+                            </div>
+                        </form>
+                    </a>
+                </li>
+
             </ul>
 
 
@@ -61,18 +77,6 @@
     <br> <br> <br> <br>
 
     </div>
-    <form  method="POST" action="{{URL::to('/search')}}"role="search">
-        @csrf
-        <div class="col-md-auto" >
-            <div class="form-group">
-                <label>Pesquisar</label>
-                <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
-                <button type="submit" class="btn btn-fill">pesquisar</button>
-
-            </div>
-
-        </div>
-    </form>
 
     <center>
         <div class="row" style="position: relative; margin: 120px">

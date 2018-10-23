@@ -21,6 +21,21 @@
             <a href="/pessoa_perdida/create/" class="nav-link">
             <i class="pe-7s-add-user"></i>Pessoa Perdida</a>
           </li>
+            <li>
+                <a><form  method="POST" action="{{URL::to('/search')}}"role="search">
+                        @csrf
+                        <div class="col-md-auto" >
+                            <div class="form-group">
+                                <label>Pesquisar</label>
+                                <input type="text" id="entrada" onkeypress="pesquisar()" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
+                                {{--<button type="submit" class="btn btn-fill">pesquisar</button>--}}
+
+                            </div>
+
+                        </div>
+                    </form>
+                </a>
+            </li>
         </ul>
 
        
@@ -63,18 +78,6 @@
 
 
 
-<form  method="POST" action="{{URL::to('/search')}}"role="search">
-    @csrf
-    <div class="col-md-auto" >
-        <div class="form-group">
-            <label>Pesquisar</label>
-            <input type="text" id="entrada" onkeypress="pesquisar()" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
-            <button type="submit" class="btn btn-fill">pesquisar</button>
-
-        </div>
-
-    </div>
-</form>
 
 
 <center>
@@ -107,25 +110,26 @@
               <img class="card-img-top"  src="/imgs_p_perdidas/{{$p_perdida->foto}}" style=" width: 400px; height: 400px;">
             </div>
             <div class=""><CODE><h1>
-                {{$p_perdida->nome}}
+               Este é o  {{$p_perdida->nome}}
             </h1></CODE>
             </div>
             <div class=""><h4>
                 <i class="pe-7s-id"></i> 
-              {{
+             Segundo os dados fornecidos nasceu  {{
                 $p_perdida->data_nasc
               }}
             </h4>
             </div>
             <div class=""><h4>
-                {{$p_perdida->created_at}}
+              Esta neste Centro ha:   {{$p_perdida->dias()}} dias.
             </h4>
             </div>
             
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-primary">Ver no Mapa</button>
+              <a href="/mapa" class="nav-link">
+                  <button type="button" class="btn btn-primary">Ver no Mapa</button></a>
           </div>
         </div>
       </div>
