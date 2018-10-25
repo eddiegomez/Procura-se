@@ -1,43 +1,57 @@
-@extends('layouts.app')
+@extends('layouts.app') 
+<link rel="stylesheet" href="<?php echo asset('css/template/bootstrap.min')?>">
+<link rel="stylesheet" href="<?php echo asset('css/template/light-bootstrap-dashboard.min')?>"
 @section('title','Procura-se (Administrativo)')
-@section('content')
+
 
 <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="azure" data-image="/images/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/pessoa_perdida/" class="simple-text">
-                    PROCURA-SE
+                <a href="{{ url('/') }}" class="simple-text">
+                   PROCURA-SE
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
-                    <a href="/user">
-                        <i class="pe-7s-add-user"></i>
-                        <p>Pessoas Perdidas</p>
+                    <a href="">
+                        <i class="pe-7s-graph"></i>
+                        <p>Home</p>
                     </a>
                 </li>
                 <li class="active">
+                    <a href="#">
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Pessoas perdidas</p>
+                    </a>
+                </li>
+                <li>
                     <a href="/centro">
+                        <i class="pe-7s-user"></i>
+                        <p>Centros</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
                         <i class="pe-7s-note2"></i>
-                        <p>Registar Centros</p>
+                        <p>Ususarios</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="#">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Usuarios</p>
+                        <p>Minha Conta</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="#">
                         <i class="pe-7s-science"></i>
-                        <p>Estatístias</p>
+                        <p>Casos de sucesso</p>
                     </a>
                 </li>
             </ul>
@@ -74,66 +88,95 @@
             </div>
         </footer>
     </div>
-
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="text-center d-flex justify-content-center">
-        <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
-    </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center">
-        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-          <li class="nav-item active">
-            <a href="#" class="nav-link">
-            <i class="pe-7s-home"></i>Pagina Inicial</a>
-          </li>
-          <li class="nav-item">
-            <a href="/pessoa_perdida/create/" class="nav-link">
-            <i class="pe-7s-add-user"></i>Pessoa Perdida</a>
-          </li>
-        </ul>
-
-       
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Olá, Edson Gomes</span>
-              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
-              <i class="pe-7s-edit"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-edit"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="pe-7s-id"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-users"></i>
-                  </div>
-                </div>
-              </a>
-              <a class="dropdown-item mt-2">
-                Editar conta
-              </a>
-              <a class="dropdown-item">
-                Lista de Ajudas
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-    </nav>
-
-
-
-
     <div class="main-panel">
-		        <div class="content mt-3" style="position: relative;top: 60px">
+    <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Icons</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                                <p class="hidden-lg hidden-md">Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-sm hidden-xs"></b>
+                                    <span class="notification hidden-sm hidden-xs">5</span>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+                                <p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               <p>Account</p>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+                                        Dropdown
+                                        <b class="caret"></b>
+                                    </p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <p>Log out</p>
+                            </a>
+                        </li>
+                        <li class="separator hidden-lg hidden-md"></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    <div class="col-md-4" style="right: 30px">
+      <a href="/create">
+      <button type="submit" class="btn btn-info btn-fill pull-right">Registar</button>
+    </a>
+    </div>
+
+	<div class="content col-md-9" style="position: relative; top: 20px;float: right;right: 40px">
             <div class="animated fadeIn">
                 <div class="row">
 
@@ -152,17 +195,19 @@
                         <th>Sexo</th>
                         <th>Idade</th>
                         <th>Data de Registo</th>
+                        <th>Localizacao actual</th>
                       </tr>
                     </thead>
                     <tbody>
                     @foreach($pessoa_perdida as $p_perdida)
                       <tr>
                         <td>{{$p_perdida->id_p_perdida}}</td>
-                        <td class="py-1"><img src="/imgs_p_perdidas/{{$p_perdida->foto}}" alt="image" /></td>
+                        <td class="py-1"><img src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" alt="image" /></td>
                         <td>{{$p_perdida->nome}}</td>
                         <td>{{$p_perdida->sexo}}</td>
-                        <td>{{$p_perdida->age()}}</td>
+                        <td>por definir</td>
                         <td>{{$p_perdida->created_at}}</td>
+                        <td>{{$p_perdida->nome_localizacao}}</td>
                       </tr>
                     @endforeach
                     </tbody>
@@ -177,9 +222,11 @@
         </div><!-- .content -->
 
 
-        
+        <main class="row">
+            @yield('content')
+        </main>
 
-    </div>
+</div>
 </div>
 
 <script type="text/javascript">
@@ -188,4 +235,3 @@
         } );
     </script>
 
-@endsection

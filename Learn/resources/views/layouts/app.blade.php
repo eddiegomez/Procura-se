@@ -42,7 +42,10 @@
  <link rel="stylesheet" href="<?php echo asset('css/bootstrapp.min.css')?>" type="text/css" rel="stylesheet">
 </head>
 <body>
+    
 
+
+@include('inc.messages')
 @yield('content')
 </body>
 

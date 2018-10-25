@@ -13,14 +13,23 @@
 |
 */
   
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('/','pessoaPerdidaController');
+
+
+Route::get('/create_perdida', function () {
+    return view('pessoa_perdida.create');
 });
 
 
-Route::get('/primeiro', function () {
-    return 'Meu primeiro route';
+Route::get('/centro', function () {
+    return view('admin.centros.teste');
 });
+
+Route::get('/create_centro', function () {
+    return view('admin.centros.create_centro');
+});
+
+
 
 //Route::get('/localizacao',function (){
 //    return \Laravel_Learn\Localizacao::all();
