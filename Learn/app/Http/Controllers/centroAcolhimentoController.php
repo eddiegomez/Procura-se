@@ -14,7 +14,10 @@ class centroAcolhimentoController extends Controller
      */
     public function index()
     {
-        return "Este e o meu centro de acolhimento";
+        $centro_acolhimento = centro_acolhimento::all();
+        
+        return view('admin.centros.index', compact('centro_acolhimento'));
+        
     }
 
     /**
@@ -24,7 +27,7 @@ class centroAcolhimentoController extends Controller
      */
     public function create()
     {
-        return view('admin.create_centro');
+        return view('admin.centros.create');
     }
 
     /**
@@ -47,7 +50,8 @@ class centroAcolhimentoController extends Controller
         $centro->obs = $request->input('obs');
         $centro->id_localizacao = 1;
         $centro->save();
-        return view('admin.create_centro')->with('message', ' created successfully!');
+        //return view('admin.centros.create')->with('message', ' created successfully!');
+        redirect('/centro')->with('sucess', ' created successfully!');
     }
 
     /**

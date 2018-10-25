@@ -21,44 +21,58 @@
 @section('content')
 
 <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-image="assets/img/sidebar-5.jpg">
+</div>
+</div>
+</div>
+    <div class="sidebar" data-color="azure" data-image="/images/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
 
 
         <div class="sidebar-wrapper">
             <div class="logo">
-                <a href="/pessoa_perdida/" class="simple-text">
-                    PROCURA-SE
+                <a href="{{ url('/') }}" class="simple-text">
+                   PROCURA-SE
                 </a>
             </div>
 
             <ul class="nav">
                 <li>
+                    <a href="">
+                        <i class="pe-7s-graph"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="">
                     <a href="/user">
-                        <i class="pe-7s-add-user"></i>
-                        <p>Pessoas Perdidas</p>
+                        <i class="pe-7s-map-marker"></i>
+                        <p>Pessoas perdidas</p>
                     </a>
                 </li>
                 <li class="active">
-                    <a href="/centro">
+                    <a href="#">
+                        <i class="pe-7s-user"></i>
+                        <p>Centros</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
                         <i class="pe-7s-note2"></i>
-                        <p>Registar Centros</p>
+                        <p>Ususarios</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="#">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Usuarios</p>
+                        <p>Minha Conta</p>
                     </a>
                 </li>
                 <li>
-                    <a href="icons.html">
+                    <a href="#">
                         <i class="pe-7s-science"></i>
-                        <p>Estatístias</p>
+                        <p>Casos de sucesso</p>
                     </a>
                 </li>
-                
             </ul>
         </div>
         <footer class="footer">
@@ -94,63 +108,17 @@
         </footer>
     </div>
 
-    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="text-center d-flex justify-content-center">
-        <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
+    
+
+<div class="col-md-4" style="right: 40px; position: relative;top: -620px">
+      <a href="/centro">
+      <button type="submit" class="btn btn-info btn-fill pull-right">Voltar</button>
+    </a>
     </div>
-      <div class="navbar-menu-wrapper d-flex align-items-center">
-        <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-          <li class="nav-item active">
-            <a href="#" class="nav-link">
-            <i class="pe-7s-home"></i>Pagina Inicial</a>
-          </li>
-          <li class="nav-item">
-            <a href="/pessoa_perdida/create/" class="nav-link">
-            <i class="pe-7s-add-user"></i>Pessoa Perdida</a>
-          </li>
-        </ul>
-
-       
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Olá, Edson Gomes</span>
-              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
-              <i class="pe-7s-edit"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-edit"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="pe-7s-id"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-users"></i>
-                  </div>
-                </div>
-              </a>
-              <a class="dropdown-item mt-2">
-                Editar conta
-              </a>
-              <a class="dropdown-item">
-                Lista de Ajudas
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-    </nav>
 
 
-<div class="content" style="left: 280px; position: relative;top: 120PX">
-            <div class="container-fluid">
+        <div class="content col-md-12" style="position: relative;top: -600px; left:300px;float: right;">
+            <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
@@ -243,7 +211,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Informação adicional</label>
-                                                <textarea rows="7" name="obs" class="form-control" placeholder="informação adicional sobre a pessoa perdida"></textarea>
+                                                <textarea rows="7" name="obs" class="form-control" placeholder="informação adicional sobre o centro"></textarea>
                                             </div>
                                         </div>
 
@@ -260,7 +228,6 @@
         </div>
 
     </div>
-</div>
 <script>
     var customLabel = {
         restaurant: {
