@@ -66,9 +66,9 @@ class pessoaPerdidaController extends Controller
         if(!($id==null)){ 
             $caso = new Caso();
             $caso->guardar_caso($id);
-            return redirect()->route('pessoa_perdida.create')->with('sucess', ' created successfully!');
+            return redirect()->route('pessoa_perdida.index')->with('sucess', ' created successfully!');
         }else
-            return redirect()->route('pessoa_perdida.create')->with('message', 'Ocorreu um erro ao gravar');
+            return redirect()->route('pessoa_perdida.index')->with('message', 'Ocorreu um erro ao gravar');
     }
 
 

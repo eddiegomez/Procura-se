@@ -18,6 +18,17 @@ class Caso extends Model
         $caso->save();
         return $caso->id_caso;
     }
+    public function age() {
+//        return strtotime(Pessoa_perdida::first()->data_nasc);
+        $date = new Carbon($this->data_nasc);
+        return $date->diffInYears();
+    }
+    public function dias() {
+//        return strtotime(Pessoa_perdida::first()->data_nasc);
+        $date = new Carbon($this->created_at);
+        return $date->diffInDays();
+    }
+
 
     public function pessoa_perdida(){
         return $this->belongsTo(Pessoa_perdida::class,'id_pessoa_perdida','id_p_perdida');

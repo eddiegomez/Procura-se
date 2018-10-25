@@ -21,4 +21,15 @@ class foto extends Model
 
         return $foto->id_foto;
     }
+
+    public function age() {
+//        return strtotime(Pessoa_perdida::first()->data_nasc);
+        $date = new Carbon($this->data_nasc);
+        return $date->diffInYears();
+    }
+    public function dias() {
+//        return strtotime(Pessoa_perdida::first()->data_nasc);
+        $date = new Carbon($this->created_at);
+        return $date->diffInDays();
+    }
 }
