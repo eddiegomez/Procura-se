@@ -28,7 +28,8 @@ class pessoaPerdidaController extends Controller
             ->select('pessoa_perdida.*', 'foto.nome_foto', 'localizacao.nome_localizacao')
             ->orderBy('id_p_perdida','desc')
             ->paginate(6);
-        
+
+        //$pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
