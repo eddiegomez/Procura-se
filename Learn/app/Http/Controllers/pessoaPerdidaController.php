@@ -19,7 +19,6 @@ class pessoaPerdidaController extends Controller
      */
     public function index()
     {
-//      
 
         $pessoa_perdida = DB::table('pessoa_perdida')
             ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')

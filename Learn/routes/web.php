@@ -43,15 +43,13 @@ Route::resource('centro_acolhimento','centroAcolhimentoController');
 Route::resource('localizacao','LocalizacaoController');
 
 Route::resource('user','userController');
-<<<<<<< HEAD
+
 
 Route::post('/search', 'pessoaPerdidaController@pesquisar');
-=======
 Route::post('/search', 'pessoaPerdidaController@pesquisar')->name('index');
 
 
 
->>>>>>> 78130120b662c533628e883048f32cfb92c06d0c
 Route::get('/mapa',function () {
     return view('localizacao.index');
 });
