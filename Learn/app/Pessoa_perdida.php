@@ -13,32 +13,30 @@ class Pessoa_perdida extends Model
     public $table = 'pessoa_perdida';
     public $timestamp = 'false';
 
-    public $age;
+    public $age ;
 
     /**
      * @return mixed
      */
 
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-        $this->age =$this->data_nasc;
-    }
+//    public function __construct(array $attributes = [])
+//    {
+//        parent::__construct($attributes);
+//        $this->age =$this->data_nasc;
+//    }
 
     public function age()
     {
-//        return strtotime(Pessoa_perdida::first()->data_nasc);
+//        return strtotime(Pessoa_perdida::first()->data_nasc);=
         $date = new Carbon($this->data_nasc);
         return $date->diffInYears();
     }
 
     public function dias()
     {
-//        return strtotime(Pessoa_perdida::first()->data_nasc);
         $date = new Carbon($this->created_at);
         return $date->diffInDays();
     }
-
 
     public function caso()
     {

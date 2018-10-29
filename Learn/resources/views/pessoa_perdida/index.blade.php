@@ -23,14 +23,14 @@
                 </li>
                 <li>
                     <a>
-                        <form method="POST" action="{{URL::to('/search')}}" role="search">
+                        <form method="POST" action="" role="search">
                             @csrf
                             <div class="col-md-auto">
                                 <div class="form-group">
                                     <label>Pesquisar</label>
-                                    <input type="text" id="entrada" onkeypress="pesquisar()" name="pesquisar"
+                                    <input type="text" id="entrada" name="pesquisar"
                                            class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}"
-                                           placeholder="pesquise pelo nome" style="text-align: center"> <br>
+                                           placeholder="pesquise a pessoa Perdida" style="text-align: center"> <br>
                                     {{--<button type="submit" class="btn btn-fill">pesquisar</button>--}}
 
                                 </div>
@@ -94,7 +94,7 @@
                                  style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
                             <div class="card-body" id="pesquisar">
                                 <h2 class="">{{$p_perdida->nome}}</h2>
-                                <h5 class="card-text">Idade: {{$p_perdida->data_nasc}} </h5>
+                                <h5 class="card-text">Idade: {{$p_perdida->age()}} </h5>
                             </div>
                             <p><a class="btn btn-info btn-fill" href="" data-toggle="modal"
                                   data-target="#exampleModalCenter{{$p_perdida->nome}}" role="button">Detalhes</a></p>
@@ -103,7 +103,7 @@
 
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModalCenter{{$p_perdida->nome}}" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%; position: ">
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%;">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -129,15 +129,17 @@
                                         </h4>
                                     </div>
                                     <div class=""><h4>
-                                            Esta neste Centro ha: {{$p_perdida->created_at}}   dias.
+                                            Esta neste Centro ha: {{$p_perdida->dias()}}   dias.
                                         </h4>
                                     </div>
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                    <a href="/mapa" class="nav-link">
-                                        <button type="button" class="btn btn-primary">Ver no Mapa</button>
+                                    {{--<a href="/mapa" class="nav-link">--}}
+                                        {{--<button type="button" class="btn btn-primary">Ver no Mapa</button>--}}
+                                        <a href="/locations/{id_localizacao}" class="nav-link">
+                                            <button type="button" class="btn btn-primary">Ver no Mapa</button>
                                     </a>
                                 </div>
                             </div>
@@ -152,35 +154,56 @@
             </div>
         </center>
 
-        <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
         <script>
-            function nome() {
+            $(document).ready(function(){
 
-                alert('bem vindo');
+                fetch_customer_data();
 
-            }
+                function fetch_customer_data(pesquisar = '')
+                {
+                    $.ajax({
+                        url:"{{URL::to('/search1')}}",
+                        method:'GET',
+                        data:{pesquisar:pesquisar},
+                        dataType:'json',
 
-            function pesquisar() {
-                alert('bem vindo');
+                    })
+                }
 
-                var texto = document.getElementById('entrada').value;
-                $.ajax({
-                    url: '/search1',
-                    method: 'get',
-                    data: {texto: texto},
-                    success: function (response) {
-//                for (var i = 0; response.length > i; i++) {
-//                    $('#pesquisar').append(' <h2 class="">'+response[i].nome+'</h2>' + ' <h5 class="card-text">Idade:'+response[i].data_nasc+'</h5>' + '            </div>' + '            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter'+response[i].nome+'" role="button">Detalhes</a></p>');
-//                }
-                        alert(response.nome)
-                    }
+                $(document).on('keyup', '#entrada', function(){
+                    alert('funciona??');
+                    var pesquisar = $(this).val();
+                    fetch_customer_data(pesquisar);
                 });
-
-            }
-
-
+            });
         </script>
+        {{--<script type="text/javascript">--}}
+            {{--$('#entrada').on('keyup',function(){--}}
+                {{--alert('teste');--}}
+                {{--$value=$(this).val();--}}
 
+                {{--$.ajax({--}}
+
+
+
+                    {{--type : 'get',--}}
+
+                    {{--url : '{{URL::to('search1')}}',--}}
+
+                    {{--data:{'search':$value},--}}
+
+                    {{--success:function(data){--}}
+
+                        {{--$('tbody').html(data);--}}
+
+                    {{--}--}}
+
+                {{--});--}}
+
+
+
+            {{--})--}}
+        {{--</script>--}}
     </center>
 @endsection
 

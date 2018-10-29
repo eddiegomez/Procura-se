@@ -29,7 +29,7 @@ class pessoaPerdidaController extends Controller
             ->orderBy('id_p_perdida','desc')
             ->paginate(6);
 
-        //$pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
+        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
@@ -135,14 +135,20 @@ class pessoaPerdidaController extends Controller
     {
         $pesquisar = $request->get('texto');
 
-        if($pesquisar){
-            $pessoa_perdida = Pessoa_perdida::where('nome','LIKE','%'. $pesquisar . '%')
-                ->orWhere('nacionalidade', 'LIKE', '%' . $pesquisar .'%')
-                ->orWhere('sexo', 'LIKE', '%' . $pesquisar .'%')
-                ->get();
-            return response()->json($pessoa_perdida);
+        if ($request->ajax()) {
+            $pesquisar = $request->get('texto');
+            if ($pesquisar != '') {
+
+                if ($pesquisar) {
+                    $pessoa_perdida = Pessoa_perdida::where('nome', 'LIKE', '%' . $pesquisar . '%')
+                        ->orWhere('nacionalidade', 'LIKE', '%' . $pesquisar . '%')
+                        ->orWhere('sexo', 'LIKE', '%' . $pesquisar . '%')
+                        ->get();
+                    return response()->json($pessoa_perdida);
+                }
+        return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
+            }
         }
-//        return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
     }
     public function uniao()
     {
