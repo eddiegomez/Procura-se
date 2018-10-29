@@ -89,7 +89,7 @@
                             console.log(resposta);
                             var distancia = resposta.rows[0].elements[0].distance.text;
                             var tempo = resposta.rows[0].elements[0].duration.text;
-                            var nome = localDaBaseDeDados.nome;
+                            var nome = localDaBaseDeDados.nome_localizacao;
                             var template =`
                             <div>
                                 <strong> ${nome} </strong>

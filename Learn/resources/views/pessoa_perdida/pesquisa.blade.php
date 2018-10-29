@@ -25,7 +25,7 @@
                             <div class="col-md-auto" >
                                 <div class="form-group">
                                     <label>Pesquisar</label>
-                                    <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
+                                    <input type="text" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise a pessoa perdida" style="text-align: center"> <br>
                                     {{--<button type="submit" class="btn btn-fill">pesquisar</button>--}}
 
                                 </div>

@@ -18,6 +18,7 @@ class Caso extends Model
         $caso->save();
         return $caso->id_caso;
     }
+  
 
     public function pessoa_perdida(){
         return $this->belongsTo(Pessoa_perdida::class,'id_pessoa_perdida','id_p_perdida');

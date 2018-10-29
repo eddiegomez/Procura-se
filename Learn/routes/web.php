@@ -43,8 +43,15 @@ Route::resource('centro_acolhimento','centroAcolhimentoController');
 Route::resource('localizacao','LocalizacaoController');
 
 Route::resource('user','userController');
+<<<<<<< HEAD
 
 Route::post('/search', 'pessoaPerdidaController@pesquisar');
+=======
+Route::post('/search', 'pessoaPerdidaController@pesquisar')->name('index');
+
+
+
+>>>>>>> 78130120b662c533628e883048f32cfb92c06d0c
 Route::get('/mapa',function () {
     return view('localizacao.index');
 });
@@ -55,7 +62,7 @@ Route::get('/locations',function () {
 //rota que retorna o lugar de onde cada pessoa perdida esta...
 Route::get('locations/{id_localizacao}',function ($id_localizacao) {
          $location = \Laravel_Learn\Localizacao::find($id_localizacao);
-         return view('ver_pessoa_perdida', compact('location'));
+         return view('localizacao.ver_pessoa_perdida', compact('location'));
      });
 Route::post('/search1', 'pessoaPerdidaController@pesquisar2');
 
