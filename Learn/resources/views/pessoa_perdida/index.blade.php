@@ -27,7 +27,7 @@
                         <div class="col-md-auto" >
                             <div class="form-group">
                                 <label>Pesquisar</label>
-                                <input type="text" id="entrada" onkeypress="pesquisar()" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquise pelo nome" style="text-align: center"> <br>
+                                <input type="text" id="entrada" onkeypress="pesquisar()" name="pesquisar" class="form-control" value="{{ isset($pesquisar) ? $pesquisar : '' }}" placeholder="pesquisar pelo nome" style="text-align: center"> <br>
                                 {{--<button type="submit" class="btn btn-fill">pesquisar</button>--}}
 
                             </div>
@@ -40,37 +40,10 @@
 
        
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Olá, Edson Gomes</span>
-              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
-              <i class="pe-7s-edit"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-edit"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="pe-7s-id"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-users"></i>
-                  </div>
-                </div>
-              </a>
-              <a class="dropdown-item mt-2">
-                Editar conta
-              </a>
-              <a class="dropdown-item">
-                Lista de Ajudas
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
           </li>
+          
         </ul>
       </div>
     </nav>
@@ -89,7 +62,8 @@
         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
             <div class="card-body" id="pesquisar">
                 <h2 class="">{{$p_perdida->nome}}</h2>
-                <h5 class="card-text">Idade: </h5>
+                <h5 class="card-text">Data de registo: {{$p_perdida->created_at}}</h5>
+                <h5 class="card-text">Data de registo: {{$p_perdida->nome_localizacao}}</h5>
             </div>
             <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter{{$p_perdida->nome}}" role="button">Detalhes</a></p>
         </div>
@@ -110,7 +84,7 @@
               <img class="card-img-top"  src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" style=" width: 400px; height: 400px;">
             </div>
             <div class=""><CODE><h1>
-               Este é o  {{$p_perdida->nome}}
+               {{$p_perdida->nome}}
             </h1></CODE>
             </div>
             <div class=""><h4>
@@ -121,7 +95,7 @@
             </h4>
             </div>
             <div class=""><h4>
-              Esta neste Centro ha:    dias.
+              Esta neste Centro ha:  dias.
             </h4>
             </div>
             

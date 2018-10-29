@@ -31,6 +31,7 @@ Route::get('/create_centro', function () {
 
 
 
+
 //Route::get('/localizacao',function (){
 //    return \Laravel_Learn\Localizacao::all();
 //});
@@ -42,6 +43,7 @@ Route::resource('centro_acolhimento','centroAcolhimentoController');
 Route::resource('localizacao','LocalizacaoController');
 
 Route::resource('user','userController');
+
 Route::post('/search', 'pessoaPerdidaController@pesquisar');
 Route::get('/mapa',function () {
     return view('localizacao.index');
@@ -70,3 +72,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

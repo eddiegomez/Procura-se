@@ -54,36 +54,20 @@
     <script src="<?php echo asset('js/bootstrap.min.js')?>" type="text/javascript"></script>
 
     <!--  Charts Plugin -->
-    <script src="<?php echo asset('js/chartist.min.js')?>"></script>
 
     <!--  Notifications Plugin    -->
-    <script src="<?php echo asset('js/bootstrap-notify.js')?>"></script>
 
     <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="<?php echo asset('js/light-bootstrap-dashboard.js?v=1.4.0')?>"></script>
 
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="<?php echo asset('js/demo.js')?>"></script>
-
-    <script src="<?php echo asset('js/table/jquery-2.1.4.min.js')?>"></script>
-    <script src="<?php echo asset('js/table/popper.min.js')?>"></script>
-    <script src="<?php echo asset('js/table/plugins.js')?>"></script>
-    <script src="<?php echo asset('js/table/main.js')?>"></script>
 
 
     <script src="<?php echo asset('js/table/datatables.min.js')?>"></script>
     <script src="<?php echo asset('js/table/dataTables.bootstrap.min.js')?>"></script>
-    <script src="<?php echo asset('js/table/dataTables.buttons.min.js')?>"></script>
-    <script src="<?php echo asset('js/table/buttons.bootstrap.min.js')?>"></script>
     <script src="<?php echo asset('js/table/jszip.min.js')?>"></script>
-    <script src="<?php echo asset('js/table/pdfmake.min.js')?>"></script>
     <script src="<?php echo asset('js/table/vfs_fonts.js')?>"></script>
-    <script src="<?php echo asset('js/table/buttons.html5.min.js')?>"></script>
-    <script src="<?php echo asset('js/table/buttons.print.min.js')?>"></script>
-    <script src="<?php echo asset('js/table/buttons.colVis.min.js')?>"></script>
     <script src="<?php echo asset('js/table/datatables-init.js')?>"></script>
 
 

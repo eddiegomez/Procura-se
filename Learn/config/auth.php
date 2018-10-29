@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'user',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -36,27 +36,25 @@ return [
     */
 
     'guards' => [
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-        'user' => [
+        'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'pessoa_ajuda' => [
-            'driver' => 'session',
-            'provider' => 'pessoas_ajuda',
-        ],
-        'responsavel_centro' => [
-            'driver' => 'session',
-            'provider' => 'responsaveis_centro',
-        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
         ],
 
+        'admin' => [
+        'driver' => 'session',
+        'provider' => 'admin',
+         ],
+
+        'pessoa_ajuda' => [
+        'driver' => 'session',
+        'provider' => 'pessoa_ajuda',
+    ],
     ],
 
     /*
@@ -81,17 +79,13 @@ return [
             'driver' => 'eloquent',
             'model' => Laravel_Learn\User::class,
         ],
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => Laravel_Learn\admin::class,
+        'admin' => [
+        'driver' => 'eloquent',
+        'model' => App\user::class,
         ],
-        'pessoas_ajuda' => [
+        'pessoa_ajuda' => [
             'driver' => 'eloquent',
-            'model' => Laravel_Learn\pessoa_ajuda::class,
-        ],
-        'responsaveis_centro' => [
-            'driver' => 'eloquent',
-            'model' => Laravel_Learn\responsavel_centro::class,
+            'model' => App\pessoa_ajuda::class,
         ],
 
         // 'users' => [
@@ -119,21 +113,6 @@ return [
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',
-            'expire' => 60,
-        ],
-        'admins' => [
-            'provider' => 'admins',
-            'table' => 'admin_password_resets',
-            'expire' => 60,
-        ],
-        'pessoas_ajuda' => [
-            'provider' => 'users',
-            'table' => 'pessoas_ajuda_password_resets',
-            'expire' => 60,
-        ],
-        'responsaveis_centro' => [
-            'provider' => 'users',
-            'table' => 'responsaveis_centro_password_resets',
             'expire' => 60,
         ],
     ],

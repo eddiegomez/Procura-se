@@ -38,4 +38,13 @@ class User extends Authenticatable
         $usr->save();
         return $usr->id_usuario;
     }
+
+    public function admin_auth(Request $request) {
+        $credentials = array($request->email, $request->password);
+            $remember = False; // funcionalidade remember me 
+            if(!Auth::guard('web')->attempt($credentials, $remember)) { // note que no guard estou a especificar um dos que defini em `config/auth`
+                 return redirect('/'); // autenticação não foi bem sucedida
+            }
+         return redirect('/user'); // se entrar foi bem sucedida
+}
 }

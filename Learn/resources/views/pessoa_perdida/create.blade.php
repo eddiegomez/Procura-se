@@ -36,7 +36,7 @@
           <li class="nav-item dropdown d-none d-xl-inline-block">
             <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <span class="profile-text">Olá, Edson Gomes</span>
-              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
+              <img class="img-xs rounded-circle" src="/imgs_p_perdidas/1538714846foto.jpg" alt="Profile image">
               <i class="pe-7s-edit"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -137,14 +137,18 @@
 
                                             </div>
                                         </div>
-            
+
+                                        
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Foto</label>
                                                 <input type="file" name="foto" class="form-control" style="height: 43px">
                                             </div>
-                                        </div>
+                                        </div>  
                                     
+
+                                       
+            
 
                                     
                                         <div class="col-md-12">

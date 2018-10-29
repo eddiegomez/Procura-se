@@ -87,7 +87,7 @@
         </footer>
     </div>
     
-
+@include('inc.navbar2')
 
     <div class="col-md-4" style="right: 30px">
       <a href="/create_centro">
