@@ -21,9 +21,7 @@
 @section('content')
 
 <div class="wrapper">
-</div>
-</div>
-</div>
+
     <div class="sidebar" data-color="azure" data-image="/images/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
@@ -107,85 +105,90 @@
             </div>
         </footer>
     </div>
+    <div class="main-panel">
+   @include('inc.navbar2')
 
+   <nav aria-label="breadcrumb" style="right: -55px; position: relative;"> 
+        <ol class="breadcrumb"> 
+            <li class="breadcrumb-item"><a href="/front-admin">Admin</a></li>
+            <li class="breadcrumb-item"><a href="/centro">Centros</a></li> 
+            <li class="breadcrumb-item current" aria-current="page">Registar</li> 
+        </ol> 
+    </nav>
     
-
-<div class="col-md-4" style="right: 40px; position: relative;top: -620px">
-      <a href="/centro">
-      <button type="submit" class="btn btn-info btn-fill pull-right">Voltar</button>
-    </a>
-    </div>
+   <div style="width: : 100%; height: 100px;">
+       @include('inc.messages')
+   </div>
 
 
-        <div class="content col-md-12" style="position: relative;top: -600px; left:300px;float: right;">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title">Dados do Centro</h4>
-                            </div>
-                            <div class="content">
-                                <form method="POST" action="/centro" enctype="multipart/form-data">
-                                        @csrf 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Nome</label>
-                                                <input type="text" class="form-control" name="designacao" placeholder="designação do centro">
-                                            </div>
-                                        </div>
+    <div class="content col-md-12" style="position: relative;margin-left: 40px; top: -30px">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="card" style="box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2);">
+                        <div class="header">
+                            <h4 class="title">Dados do Centro</h4>
+                        </div>
+                        <div class="content">
+                            <form method="POST" action="/centro" enctype="multipart/form-data">
+                            @csrf 
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Nome</label>
+                                        <input type="text" class="form-control" name="designacao" placeholder="designação do centro">
+                                    </div>
+                                </div>
 
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Tipo</label>
-                                                <select class="form-control" name="tipo" style="height: 34px">
-                                                    <option value="">Selecione</option>
-                                                    <option value="Posto Policial">Posto Policial</option>
-                                                    <option value="Centro de Abrigo">Centro de Abrigo</option>
-                                                    <option value="Outros">Outros</option>
-                                                </select> 
-                                            </div>
-                                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Tipo</label>
+                                        <select class="form-control" name="tipo" style="height: 34px">
+                                            <option value="">Selecione</option>
+                                            <option value="Posto Policial">Posto Policial</option>
+                                            <option value="Centro de Abrigo">Centro de Abrigo</option>
+                                            <option value="Outros">Outros</option>
+                                        </select> 
+                                    </div>
+                                </div>
 
 
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Capacidade</label>
-                                                <input type="number" name="capacidade" class="form-control" placeholder="">
-                                            </div>
-                                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Capacidade</label>
+                                        <input type="number" name="capacidade" class="form-control" placeholder="">
+                                    </div>
+                                </div>
                                     
-                                       <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Celular</label>
-                                                <input type="number" name="celular" class="form-control" placeholder="+258" required="">
-                                            </div>
-                                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Celular</label>
+                                        <input type="number" name="celular" class="form-control" placeholder="+258" required="">
+                                    </div>
+                                </div>
 
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label>Email Institucional</label>
+                                        <input type="text" name="email" class="form-control" placeholder="centro@exemplo.com">
+                                    </div>
+                                </div>
 
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Email Institucional</label>
-                                                <input type="text" name="email" class="form-control" placeholder="centro@exemplo.com">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Provincia</label>
-                                                <select class="form-control" name="provincia" style="height: 35px">
-                                                    <option value="Maputo">Maputo</option>
-                                                    <option value="Gaza">Gaza</option>
-                                                    <option value="Inhambane">Inhambane</option>
-                                                    <option value="Beira">Beira</option>
-                                                    <option value="Tete">Tete</option>
-                                                    <option value="Zambezia">Zambezia</option>
-                                                    <option value="Nampula">Nampula</option>
-                                                    <option value="Niassa">Niassa</option>
-                                                    <option value="Cabo Delgado">Cabo-Delgado</option>
-                                                </select> 
-                                            </div>
-                                        </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Provincia</label>
+                                        <select class="form-control" name="provincia" style="height: 35px">
+                                            <option value="Maputo">Maputo</option>
+                                            <option value="Gaza">Gaza</option>
+                                            <option value="Inhambane">Inhambane</option>
+                                            <option value="Beira">Beira</option>
+                                            <option value="Tete">Tete</option>
+                                            <option value="Zambezia">Zambezia</option>
+                                            <option value="Nampula">Nampula</option>
+                                            <option value="Niassa">Niassa</option>
+                                            <option value="Cabo Delgado">Cabo-Delgado</option>
+                                        </select> 
+                                    </div>
+                                </div>
 
                                         <div class="col-md-10">
                                             <div class="form-group">
@@ -198,6 +201,14 @@
                                             <div class="form-group">
                                                 <label>Numero</label>
                                                 <input type="number" name="nr" class="form-control" placeholder="numero">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Logotipo</label>
+                                                <input type="file" name="foto" class="form-control" placeholder="" style="height: 43px">
                                             </div>
                                         </div>
 
@@ -228,6 +239,8 @@
         </div>
 
     </div>
+</div>
+
 <script>
     var customLabel = {
         restaurant: {
@@ -335,9 +348,9 @@
 &callback=initMap"  type="text/javascript"></script>
 
 <script type="text/javascript">
-        $(document).ready(function() {
-          $('#bootstrap-data-table-export').DataTable();
-        } );
-    </script>
+    $(document).ready(function() {
+        $('#bootstrap-data-table-export').DataTable();
+    } );
+</script>
 
 @endsection

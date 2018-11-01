@@ -17,7 +17,7 @@
 
             <ul class="nav">
                 <li>
-                    <a href="">
+                    <a href="/front-admin">
                         <i class="pe-7s-graph"></i>
                         <p>Home</p>
                     </a>
@@ -54,95 +54,48 @@
                 </li>
             </ul>
     	</div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Portfolio
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                               Blog
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                </p>
-            </div>
-        </footer>
+        
     </div>
     
 @include('inc.navbar2')
+    <nav aria-label="breadcrumb" style=" left: 300px; position: relative;"> 
+        <ol class="breadcrumb"> 
+            <li class="breadcrumb-item"><a href="/front-admin">Admin</a></li>
+            <li class="breadcrumb-item current" aria-current="page">Centros</li> 
+        </ol> 
+    </nav>
 
-    <div class="col-md-4" style="right: 30px">
+    <div class="col-md-4" style="right: 20px">
       <a href="/create_centro">
-      <button type="submit" class="btn btn-info btn-fill pull-right">Registar</button>
+      <button type="submit" class="btn btn-info btn-fill pull-right">Novo Centro</button>
     </a>
     </div>
-    @include('inc.messages')
-                <div class="content col-md-9" style="position: relative;top: 40px; float: right;; right: 40px">
-            <div class="animated fadeIn">
-                <div class="row">
+     <div style="width: : 100%; height: 100px;">
+       @include('inc.messages')
+   </div>
+   <div class="col-sm-10" style="left: 290px">
+        <center>
+            
+<div class="col-sm-10" style="position: relative; margin: 12px;top: -45px" >
+    @foreach($centro_acolhimento as $centro)
+    <div class="col-sm-4">
+        <div class="card" style="width: 15rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);margin-left: 20px">
+        <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$centro->foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
+            <div class="card-body" id="pesquisar">
+                <h2 class="">{{$centro->designacao}}</h2>
+                
+            </div>
+            <p><a class="btn btn-info btn-fill" href="/mapa"  role="button">Mostrar no Mapa</a></p>
+        </div>
+    </div>
 
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Centros de Acolhimento</strong>
-                        </div>
-                        <div class="card-body">
-                  <table id="bootstrap-data-table" class="table table-striped">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Designação</th>
-                        <th>Tipo</th>
-                        <th>Capacidade</th>
-                        <th>Celular</th>
-                        <th>Email</th>
-                        <th>Provincia</th>
-                        <th>Avenida</th>
-                        <th>numero</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($centro_acolhimento as $centro)
-                      <tr>
-                        <td>{{$centro->id_centro}}</td>
-                        <td>{{$centro->designacao}}</td>
-                        <td>{{$centro->tipo}}</td>
-                        <td>{{$centro->capacidade}}</td>
-                        <td>{{$centro->celular}}</td>
-                        <td>{{$centro->email}}</td>
-                        <td>{{$centro->provincia}}</td>
-                        <td>{{$centro->avenida}}</td>
-                        <td>{{$centro->numero}}</td>
-                      </tr>
-                    @endforeach
-                    </tbody>
-                  </table>
-                        </div>
-                    </div>
-                </div>
+    
+    @endforeach
+        
 
-
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
+</div>
+</center>
+</div>
 
 
         <main class="row">

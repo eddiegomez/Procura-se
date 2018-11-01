@@ -16,12 +16,13 @@
               <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
+                  <label class="label">Email</label>
                   <label class="label">{{ __('E-Mail Address') }}</label>
                   <div class="input-group">
-                    <input type="mail" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="email" value="{{ old('email') }}" required autofocus>
+                    <input type="mail" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Email" value="{{ old('email') }}" required autofocus>
                     @if ($errors->has('email'))
                        <span class="invalid-feedback" role="alert">
-                      <strong>{{ $errors->first('email') }}</strong>
+                        <i class="mdi mdi-check-circle-outline"></i>
                       </span>
                     @endif
                     <div class="input-group-append">
@@ -34,7 +35,7 @@
                 <div class="form-group">
                   <label class="label">{{ __('Password') }}</label>
                   <div class="input-group">
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required placeholder="**********">
                     @if ($errors->has('password'))
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $errors->first('password') }}</strong>
@@ -48,7 +49,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary submit-btn btn-block">Login</button>{{ __('Login') }}
+                  <button class="btn btn-primary submit-btn btn-block">Login</button>
                 </div>
                 <div class="form-group d-flex justify-content-between">
                   <div class="form-check form-check-flat mt-0">
@@ -62,23 +63,23 @@
                   <button class="btn btn-block g-login">
                 </div>
                 <div class="text-block text-center my-3">
-                  <span class="text-small font-weight-semibold">Not a member ?</span>
-                  <a href="register.html" class="text-black text-small">Create new account</a>
+                  <span class="text-small font-weight-semibold">Ainda não está registado ?</span>
+                  <a href="register.html" class="text-black text-small">Crie uma conta</a>
                 </div>
               </form>
             </div>
             <ul class="auth-footer">
               <li>
-                <a href="#">Conditions</a>
+                <a href="#">Condicoes</a>
               </li>
               <li>
-                <a href="#">Help</a>
+                <a href="#">Ajuda</a>
               </li>
               <li>
-                <a href="#">Terms</a>
+                <a href="#">Termos</a>
               </li>
             </ul>
-            <p class="footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+            <p class="footer-text text-center">copyright © 2018 Procura-se. All rights reserved.</p>
           </div>
         </div>
       </div>

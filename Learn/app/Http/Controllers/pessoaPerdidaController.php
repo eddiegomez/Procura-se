@@ -28,7 +28,7 @@ class pessoaPerdidaController extends Controller
             ->orderBy('id_p_perdida','desc')
             ->paginate(6);
 
-        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
+        
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
@@ -92,7 +92,8 @@ class pessoaPerdidaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pessoa_perdida = pessoa_perdida::find($id);
+        return view('admin.pessoa_perdida.edit')->with('pessoa_perdida', $pessoa_perdida);
     }
 
     /**
@@ -104,7 +105,7 @@ class pessoaPerdidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

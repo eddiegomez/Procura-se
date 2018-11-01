@@ -17,7 +17,7 @@
 
             <ul class="nav">
                 <li>
-                    <a href="">
+                    <a href="/front-admin">
                         <i class="pe-7s-graph"></i>
                         <p>Home</p>
                     </a>
@@ -58,13 +58,21 @@
     <div class="main-panel">
    @include('inc.navbar2')
 
-    <div class="col-md-4" style="left: -250px">
+   <nav aria-label="breadcrumb" style="left: 15px;position: relative;"> 
+        <ol class="breadcrumb"> 
+            <li class="breadcrumb-item"><a href="/front-admin">Admin</a></li> 
+            <li class="breadcrumb-item current" aria-current="page">Pessoas perdidas</li> 
+        </ol> 
+    </nav>
+
+
+    <div class="col-md-4" style="left: -240px">
       <a href="/create">
-      <button type="submit" class="btn btn-info btn-fill pull-right">Registar</button>
+      <button type="submit" class="btn btn-info btn-fill pull-right">Adicionar</button>
     </a>
     </div>
 
-	<div class="content col-md-12" style="top: -200px;position: relative;">
+	<div class="content col-md-12" style="top: -190px;position: relative;">
             <div class="animated fadeIn">
                 <div class="row">
 
@@ -84,6 +92,8 @@
                         <th>Idade</th>
                         <th>Data de Registo</th>
                         <th>Localizacao actual</th>
+                        <th>Operação</th>
+                        <th>Mais</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -96,6 +106,8 @@
                         <td>por definir</td>
                         <td>{{$p_perdida->created_at}}</td>
                         <td>{{$p_perdida->nome_localizacao}}</td>
+                        <td><a class="btn btn-success" href="/pessoa_perdida/{{$p_perdida->id_p_perdida}}/edit">Encontrada</a></td> 
+                        <td><a class="btn btn-sucess" href="/pessoa_perdida/{{$p_perdida->id_p_perdida}}/edit">Editar</a></td>
                       </tr>
                     @endforeach
                     </tbody>
