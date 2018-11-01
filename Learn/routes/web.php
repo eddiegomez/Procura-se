@@ -53,14 +53,16 @@ Route::post('/search', 'pessoaPerdidaController@pesquisar')->name('index');
 Route::get('/mapa',function () {
     return view('localizacao.index');
 });
-Route::get('/locations',function () {
- return \Laravel_Learn\Localizacao::all();
+Route::get('/api/locations/{id_localizacao}',function ($id_localizacao) {
+ return [\Laravel_Learn\Localizacao::find($id_localizacao)];
 });
+Route::get('/live_search', 'PesquisaPessoaPerdidaController@index');
+Route::get('/live_search/action', 'PesquisaPessoaPerdidaController@action')->name('live_search.action');
 
 //rota que retorna o lugar de onde cada pessoa perdida esta...
 Route::get('locations/{id_localizacao}',function ($id_localizacao) {
          $location = \Laravel_Learn\Localizacao::find($id_localizacao);
-         return view('localizacao.ver_pessoa_perdida', compact('location'));
+         return view('localizacao.ver_pessoa_perdida')->with('location',$location);
      });
 Route::post('/search1', 'pessoaPerdidaController@pesquisar2');
 

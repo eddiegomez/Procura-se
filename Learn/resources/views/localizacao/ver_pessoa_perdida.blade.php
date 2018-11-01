@@ -52,25 +52,14 @@
                     zoom: 13.5
                 });
                 loadLocations();
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: currentLocation,
-                });
-                infoWindow.setContent('<span>Esta é a sua localização actual</span>');
-                infoWindow.open(map, marker);
+            //    infoWindow.setContent('<span>Esta é a sua localização actual</span>');
+              //  infoWindow.open(map, marker);
 
             });
-        } else {
-            map = new google.maps.Map(document.getElementById('map'), {
-                center: new google.maps.LatLng(-25.923794, 32.574922),
-                zoom: 20
-            });
-
         }
-
         function loadLocations() {
             $.ajax({
-                url: '/locations',
+                url: '/api/locations/{{$location->id_localizacao}}',
                 success: function (data ) {
                     data.forEach(function (localDaBaseDeDados)
                     {

@@ -62,52 +62,53 @@
         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
             <div class="card-body" id="pesquisar">
                 <h2 class="">{{$p_perdida->nome}}</h2>
-                <h5 class="card-text">Data de registo: {{$p_perdida->nome_foto}}</h5>
-                <h5 class="card-text">Data de registo: {{$p_perdida->nome_localizacao}}</h5>
+                <h5 class="card-text">Idade: {{\Laravel_Learn\Pessoa_perdida::calcularIdade($p_perdida->data_nasc)}}</h5>
             </div>
             <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter{{$p_perdida->nome}}" role="button">Detalhes</a></p>
         </div>
     </div>
 
      <!-- Modal -->
-    <div class="modal fade"id="exampleModalCenter{{$p_perdida->nome}}"tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%; position: ">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa perdida</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div>
-              <img class="card-img-top"  src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" style=" width: 400px; height: 400px;">
+        <div class="modal fade" id="exampleModalCenter{{$p_perdida->nome}}" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%; position:relative ">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa
+                            perdida</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <img class="card-img-top" src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}"
+                                 style=" width: 400px; height: 400px;">
+                        </div>
+                        <div class=""><CODE><h1>
+                                </h1></CODE>
+                        </div>
+                        <div class=""><h4>
+                                <i class="pe-7s-id"></i>
+                                Segundo os dados fornecidos
+                                nasceu  {{$p_perdida->data_nasc}}
+                            </h4>
+                        </div>
+                        <div class=""><h4>
+                                Esta neste Centro ha: {{ \Laravel_Learn\Pessoa_perdida::calcularDias($p_perdida->created_at) }} dias.
+                            </h4>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <a href="/locations/{{$p_perdida->id_localizacao}}" class="nav-link">
+                            <button type="button" class="btn btn-primary">Ver no Mapa</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class=""><CODE><h1>
-               {{$p_perdida->nome}}
-            </h1></CODE>
-            </div>
-            <div class=""><h4>
-                <i class="pe-7s-id"></i> 
-             Segundo os dados fornecidos nasceu  {{
-                $p_perdida->data_nasc
-              }}
-            </h4>
-            </div>
-            <div class=""><h4>
-              Esta neste Centro ha:  dias.
-            </h4>
-            </div>
-            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <a href="/mapa" class="nav-link">
-                  <button type="button" class="btn btn-primary">Ver no Mapa</button></a>
-          </div>
         </div>
-      </div>
-    </div>
     @endforeach
         <br>
         <div style=" margin-left: 500px">
@@ -118,34 +119,34 @@
 </center>
 
 <script src="<?php echo asset('js/jquery-2.1.4.min.js')?>"></script>
-<script>
-    function nome() {
+    <script>
+        $(document).ready(function(){
 
-        alert('bem vindo');
+            fetch_customer_data();
 
-    }
+            function fetch_customer_data(query = '')
+            {
+//                alert('olla');
+                $.ajax({
+                    url:"{{ route('live_search.action') }}",
+                    method:'GET',
 
-    function pesquisar(){
-        alert('bem vindo');
-
-        var texto = document.getElementById('entrada').value;
-        $.ajax({
-            url      : '/search1',
-            method   : 'get',
-            data     : { texto : texto },
-            success  : function(response){
-//                for (var i = 0; response.length > i; i++) {
-//                    $('#pesquisar').append(' <h2 class="">'+response[i].nome+'</h2>' + ' <h5 class="card-text">Idade:'+response[i].data_nasc+'</h5>' + '            </div>' + '            <p><a class="btn btn-info btn-fill" href="" data-toggle="modal" data-target="#exampleModalCenter'+response[i].nome+'" role="button">Detalhes</a></p>');
-//                }
-                alert(response.nome)
+                    data:{query:query},
+                    dataType:'json',
+                    success:function(data)
+                    {
+                        $('tbody').html(data.table_data);
+                        $('#total_records').text(data.total_data);
+                    }
+                })
             }
+
+            $(document).on('keyup', '#entrada', function(){
+                var query = $(this).val();
+                fetch_customer_data(query);
+            });
         });
-
-    }
-
-
-
-</script>
+    </script>
 
 </center>
 @endsection

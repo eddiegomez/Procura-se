@@ -2,10 +2,10 @@
 
 namespace Laravel_Learn;
 
-use Faker\Provider\DateTime;
-use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Database\
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+
+//use Illuminate\Database\
 
 class Pessoa_perdida extends Model
 {
@@ -25,6 +25,9 @@ class Pessoa_perdida extends Model
 //        $this->age =$this->data_nasc;
 //    }
 
+
+
+
     public function age()
     {
 //        return strtotime(Pessoa_perdida::first()->data_nasc);=
@@ -38,8 +41,22 @@ class Pessoa_perdida extends Model
         return $date->diffInDays();
     }
 
-    public function caso()
-    {
-        return $this->hasOne(Caso::class);
+//    public function caso()
+//    {
+//        return $this->hasOne(Caso::class);
+//    }
+
+    public static function calcularIdade( $data){
+
+        $date = new Carbon($data);
+        return $date->diffInYears();
+
+    }
+
+    public static function calcularDias( $data){
+
+        $date = new Carbon($data);
+        return $date->diffInDays();
+
     }
 }

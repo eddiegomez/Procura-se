@@ -93,8 +93,8 @@
                         <td class="py-1"><img src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" alt="image" /></td>
                         <td>{{$p_perdida->nome}}</td>
                         <td>{{$p_perdida->sexo}}</td>
-                        <td>por definir</td>
-                        <td>{{$p_perdida->created_at}}</td>
+                        <td>{{\Laravel_Learn\Pessoa_perdida::calcularIdade($p_perdida->data_nasc)}}</td>
+                        <td>{{\Laravel_Learn\Pessoa_perdida::calcularDias($p_perdida->created_at)}}</td>
                         <td>{{$p_perdida->nome_localizacao}}</td>
                       </tr>
                     @endforeach

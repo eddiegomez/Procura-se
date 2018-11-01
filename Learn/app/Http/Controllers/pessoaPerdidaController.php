@@ -19,16 +19,15 @@ class pessoaPerdidaController extends Controller
      */
     public function index()
     {
-
         $pessoa_perdida = DB::table('pessoa_perdida')
             ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
             ->join('caso', 'caso.id_pessoa_perdida', '=', 'pessoa_perdida.id_p_perdida')
             ->join('localizacao', 'localizacao.id_localizacao', '=', 'caso.id_localizacao')
-            ->select('pessoa_perdida.*', 'foto.nome_foto', 'localizacao.nome_localizacao')
+            ->select('pessoa_perdida.*', 'foto.nome_foto', 'localizacao.*')
             ->orderBy('id_p_perdida','desc')
-            ->paginate(6);
-
-        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(6);
+            ->paginate(3);
+//        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(3);
+           // dd($pessoa_perdida);
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
@@ -132,29 +131,28 @@ class pessoaPerdidaController extends Controller
     }
     public function pesquisar2(Request $request)
     {
-        $pesquisar = $request->get('texto');
-
         if ($request->ajax()) {
-            $pesquisar = $request->get('texto');
-            if ($pesquisar != '') {
+            $output = '';
+            $query = $request->get('query');
+            if ($query != '') {
+                $data = DB::table('pessoa_perdida')
+                    ->where('nome', 'like', '%' . $query . '%')
+                    ->orWhere('sexo', 'like', '%' . $query . '%')
+                    ->orWhere('nacionalidade', 'like', '%' . $query . '%')
+                    ->orWhere('naturalidade', 'like', '%' . $query . '%')
+                    ->orderBy('id_p_perdida', 'desc')
+                    ->get();
 
-                if ($pesquisar) {
-                    $pessoa_perdida = Pessoa_perdida::where('nome', 'LIKE', '%' . $pesquisar . '%')
-                        ->orWhere('nacionalidade', 'LIKE', '%' . $pesquisar . '%')
-                        ->orWhere('sexo', 'LIKE', '%' . $pesquisar . '%')
-                        ->get();
-                    return response()->json($pessoa_perdida);
-                }
-        return view('pessoa_perdida.index')->withmessage('nao e possivel encontrar o dado');
+
             }
+//            $data = array(
+//                'table_data' => $output,
+//
+//            );
+
+            echo json_encode($data);
         }
     }
-    public function uniao()
-    {
-        $resultados = DB::table('caso')
-            ->join('pessoa_perdida', 'caso.id_pessoa_perdida', '=', 'pessoa_perdida.id_p_perdida')
-            ->join('localizacao', 'localizacao.id_localizacao', '=', 'caso.id_localizacao')
-            ->select('caso.*', 'pessoa_perdida.nome', 'localizacao.*')
-            ->get();
-    }
+
+
 }

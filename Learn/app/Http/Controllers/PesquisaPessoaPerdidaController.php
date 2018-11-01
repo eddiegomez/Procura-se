@@ -3,20 +3,62 @@
 namespace Laravel_Learn\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel_Learn\Pessoa_perdida;
+use Illuminate\Support\Facades\DB;
 
 class PesquisaPessoaPerdidaController extends Controller
 {
-    public function pesquisar(Request $request)
+    function index()
     {
-        $dados = [];
-        $dados['url'] = url('/');
-        $dados['posts'] = Posts::where('nome','like','%'.$request->input('pesquisar').'%')->where('ativo','=',true)->get();
-        foreach ($dados['posts'] as $key => $value) {
-            $dados['posts'][$key]->categoria = RelacaoPostCategoria::
-            join('categorias','relacao_post_categoria.categoria_id','=','categorias.id')
-                ->where('relacao_post_categoria.post_id','=',$dados['posts'][$key]->id)
-                ->first()->categoria;
-        }
-        return response()->json($dados);
+        $pessoa_perdida = Pessoa_perdida::all();
+        return view('pessoa_perdida.live_search');
     }
+
+    function action(Request $request)
+    {
+        if ($request->ajax()) {
+            $output = '';
+            $query = $request->get('query');
+            if ($query != '') {
+                $data = DB::table('pessoa_perdida')
+                    ->where('nome', 'like', '%' . $query . '%')
+                    ->orWhere('sexo', 'like', '%' . $query . '%')
+                    ->orWhere('nacionalidade', 'like', '%' . $query . '%')
+                    ->orWhere('naturalidade', 'like', '%' . $query . '%')
+                    ->orderBy('id_p_perdida', 'desc')
+                    ->get();
+
+            } else {
+                $data = DB::table('pessoa_perdida')
+                    ->orderBy('id_p_perdida', 'desc')
+                    ->get();
+            }
+            $total_row = $data->count();
+            if ($total_row > 0) {
+                foreach ($data as $row) {
+                    $output .= '
+        <tr>
+         <td>' . $row->nome . '</td>
+         <td>' . $row->Sexo . '</td>
+         <td>' . $row->nacionalidade . '</td>
+         <td>' . $row->naturalidade . '</td>
+        </tr>
+        ';
+                }
+            } else {
+                $output = '
+       <tr>
+        <td align="center" colspan="5">No Data Found</td>
+       </tr>
+       ';
+            }
+            $data = array(
+                'table_data' => $output,
+                'total_data' => $total_row
+            );
+
+            echo json_encode($data);
+        }
+    }
+
 }
