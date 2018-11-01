@@ -15,15 +15,13 @@
   
 Route::resource('/','pessoaPerdidaController');
 
+Route::get('/front-admin','userController@contador');
 
 Route::get('/create_perdida', function () {
     return view('pessoa_perdida.create');
 });
 
 
-Route::get('/centro', function () {
-    return view('admin.centros.teste');
-});
 
 Route::get('/create_centro', function () {
     return view('admin.centros.create_centro');

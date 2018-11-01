@@ -3,11 +3,8 @@
 namespace Laravel_Learn\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Laravel_Learn\User;
-use Laravel_Learn\Pessoa_perdida;
-use Illuminate\Support\Facades\DB;
 
-class userController extends Controller
+class familiarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +13,7 @@ class userController extends Controller
      */
     public function index()
     {
-        $pessoa_perdida = DB::table('pessoa_perdida')
-            ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
-            ->join('caso', 'caso.id_pessoa_perdida', '=', 'pessoa_perdida.id_p_perdida')
-            ->join('localizacao', 'localizacao.id_localizacao', '=', 'caso.id_localizacao')
-            ->select('pessoa_perdida.*', 'foto.nome_foto', 'localizacao.nome_localizacao')
-            ->orderBy('id_p_perdida','desc')
-            ->paginate(6);
-        
-        //return view('admin.user', compact('pessoa_perdida'));
-        return view('admin.user', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
+        //
     }
 
     /**
@@ -46,12 +34,7 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
-        $user->name = $request->input('nome');
-        $user->email = $request->input('email');
-        $user->password = $request->input('senha');
-        $user->save();
-        return 'saved';
+        //
     }
 
     /**
@@ -97,11 +80,5 @@ class userController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function contador()
-    {
-        $centro = DB::select('SELECT COUNT(id_centro) FROM centro_acolhimento');
-        return view('admin.front-office', compact('centro_acolhimento'))->with('centro_acolhimento',$centro);
     }
 }

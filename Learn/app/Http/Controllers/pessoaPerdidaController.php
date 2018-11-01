@@ -25,9 +25,11 @@ class pessoaPerdidaController extends Controller
             ->join('localizacao', 'localizacao.id_localizacao', '=', 'caso.id_localizacao')
             ->select('pessoa_perdida.*', 'foto.nome_foto', 'localizacao.*')
             ->orderBy('id_p_perdida','desc')
+
             ->paginate(3);
 //        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(3);
            // dd($pessoa_perdida);
+
         return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
     }
 
@@ -91,7 +93,8 @@ class pessoaPerdidaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pessoa_perdida = pessoa_perdida::find($id);
+        return view('admin.pessoa_perdida.edit')->with('pessoa_perdida', $pessoa_perdida);
     }
 
     /**
@@ -103,7 +106,7 @@ class pessoaPerdidaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

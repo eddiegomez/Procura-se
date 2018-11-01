@@ -4,6 +4,7 @@ namespace Laravel_Learn\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel_Learn\centro_acolhimento;
+use Illuminate\Support\Facades\DB;
 
 class centroAcolhimentoController extends Controller
 {
@@ -14,9 +15,11 @@ class centroAcolhimentoController extends Controller
      */
     public function index()
     {
+        //$centro_acolhimento = DB::table('centro_acolhimento')->orderBy('created_at','desc');
+        //$centro_acolhimento = DB::select('select count(id_centro), foto from centro_acolhimento group by id_centro');
         $centro_acolhimento = centro_acolhimento::all();
-        
-        return view('admin.centros.index', compact('centro_acolhimento'));
+        return view('admin.centros.index', compact('centro_acolhimento'))->with('sucess','Registado com sucesso');
+        //return redirect('/centro')->with('sucess','Registado com sucesso');
         
     }
 
@@ -27,7 +30,7 @@ class centroAcolhimentoController extends Controller
      */
     public function create()
     {
-        return view('admin.centros.create');
+        return view('admin.centros.index');
     }
 
     /**
@@ -39,6 +42,10 @@ class centroAcolhimentoController extends Controller
     public function store(Request $request)
     {
         $centro = new centro_acolhimento();
+        $file = $request->file('foto');
+        $name = time().$file->getClientOriginalName();
+        $file->move(public_path().'/imgs_p_perdidas/',$name);
+
         $centro->designacao = $request->input('designacao');
         $centro->tipo = $request->input('tipo');
         $centro->capacidade = $request->input('capacidade');
@@ -47,11 +54,12 @@ class centroAcolhimentoController extends Controller
         $centro->provincia = $request->input('provincia');
         $centro->avenida = $request->input('avenida');
         $centro->numero = $request->input('nr');
+        $centro->foto = $name;
         $centro->obs = $request->input('obs');
         $centro->id_localizacao = 1;
         $centro->save();
-        //return view('admin.centros.create')->with('message', ' created successfully!');
-        redirect('/centro')->with('sucess', ' created successfully!');
+        return view('admin.centros.create_centro')->with('message', ' created successfully!');
+        //redirect('/create_centro')->with('sucess', ' created successfully!');
     }
 
     /**
