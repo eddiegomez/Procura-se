@@ -1,4 +1,4 @@
-     <?php
+<?php
      use Illuminate\Support\Facades\Input;
      use Laravel_Learn\Pessoa_perdida;
 
@@ -16,10 +16,16 @@
 Route::resource('/','pessoaPerdidaController');
 
 Route::get('/front-admin','userController@contador');
+Route::get('/editar','pessoaPerdidaController@edit');
+Route::resource('/caso','casoController');
+
 
 Route::get('/create_perdida', function () {
     return view('pessoa_perdida.create');
 });
+
+
+Route::resource('/contribuir','contributoController');
 
 
 

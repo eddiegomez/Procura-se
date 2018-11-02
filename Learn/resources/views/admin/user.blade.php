@@ -106,7 +106,7 @@
                         <td>{{\Laravel_Learn\Pessoa_perdida::calcularIdade($p_perdida->data_nasc)}}</td>
                         <td>{{\Laravel_Learn\Pessoa_perdida::calcularDias($p_perdida->created_at)}}</td>
                         <td>{{$p_perdida->nome_localizacao}}</td>
-                        <td><a class="btn btn-success" href="/pessoa_perdida/{{$p_perdida->id_p_perdida}}/edit">Encontrada</a></td> 
+                        <td><a class="btn btn-success" href="/caso/{{$p_perdida->id_p_perdida}}/edit">Encontrada</a></td> 
                         <td><a class="btn btn-sucess" href="/pessoa_perdida/{{$p_perdida->id_p_perdida}}/edit">Editar</a></td>
                       </tr>
                     @endforeach

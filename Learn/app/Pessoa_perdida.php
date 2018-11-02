@@ -55,8 +55,17 @@ class Pessoa_perdida extends Model
 
     public static function calcularDias( $data){
 
+
         $date = new Carbon($data);
-        return $date->diffInDays();
+        if($date->diffInSeconds()<60)
+            return $date->diffInSeconds().' segundos atrás';
+        if($date->diffInMinutes()<60)
+            return $date->diffInMinutes().' minutos atrás';
+        if($date->diffInHours()<24)
+            return $date->diffInHours().' horas atrás';
+        
+
+        return $date->diffInDays().' dias atrás';
 
     }
 }

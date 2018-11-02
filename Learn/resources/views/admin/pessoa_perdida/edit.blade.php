@@ -108,8 +108,9 @@
                             <h4 class="title">Pessoa Perdida</h4>
                         </div>
                         <div class="content">
-                            <form method="POST" action="pessoaPerdidaController@update/{{$pessoa_perdida->id_p_perdida}}" enctype="multipart/form-data">
-                            @csrf 
+                            <form method="POST" action="/pessoa_perdida/{{$pessoa_perdida->id_p_perdida}}" enctype="multipart/form-data">
+                                @method('PUT')
+                                @csrf 
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label>Nome</label>

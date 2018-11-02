@@ -4,9 +4,9 @@ namespace Laravel_Learn;
 
 use Illuminate\Database\Eloquent\Model;
 
-class familiar extends Model
+class contributo extends Model
 {
-    public $primaryKey='id_familiar';
-    public $table='familiar';
+    public $primaryKey='id_contributo';
+    public $table='contributo';
     public $timestamp = false;
 }

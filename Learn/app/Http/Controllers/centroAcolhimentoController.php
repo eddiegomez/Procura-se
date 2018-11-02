@@ -3,6 +3,7 @@
 namespace Laravel_Learn\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel_Learn\pessoa_perdida;
 use Laravel_Learn\centro_acolhimento;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +16,12 @@ class centroAcolhimentoController extends Controller
      */
     public function index()
     {
-        //$centro_acolhimento = DB::table('centro_acolhimento')->orderBy('created_at','desc');
-        //$centro_acolhimento = DB::select('select count(id_centro), foto from centro_acolhimento group by id_centro');
-        $centro_acolhimento = centro_acolhimento::all();
+       /* $centro_acolhimento = DB::table('centro_acolhimento')
+            ->join('caso', 'caso.id_caso', '=', 'centro_acolhimento.id_caso')
+            ->join('foto', 'foto.id_foto', '=', 'centro_acolhimento.id_foto')
+            ->join('pessoa_perdida', 'pessoa_perdida.id_p_perdida', '=', 'caso.id_p_perdida')
+            ->select('centro_acolhimento.*', 'pessoa_perdida.count(id_p_perdida)');*/
+            $centro_acolhimento = centro_acolhimento::all();
         return view('admin.centros.index', compact('centro_acolhimento'))->with('sucess','Registado com sucesso');
         //return redirect('/centro')->with('sucess','Registado com sucesso');
         

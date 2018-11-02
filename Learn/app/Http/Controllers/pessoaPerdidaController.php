@@ -23,14 +23,17 @@ class pessoaPerdidaController extends Controller
             ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
             ->join('caso', 'caso.id_pessoa_perdida', '=', 'pessoa_perdida.id_p_perdida')
             ->join('localizacao', 'localizacao.id_localizacao', '=', 'caso.id_localizacao')
-            ->select('pessoa_perdida.*', 'foto.nome_foto', 'localizacao.*')
+            ->join('centro_acolhimento', 'centro_acolhimento.id_centro', '=', 'localizacao.id_localizacao')
+            ->select('pessoa_perdida.*', 'foto.nome_foto', 'localizacao.*', 'centro_acolhimento.designacao')
+            ->where('pessoa_perdida.estado', '=',1)
             ->orderBy('id_p_perdida','desc')
+            ->paginate(6);
 
-            ->paginate(3);
+           
 //        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(3);
            // dd($pessoa_perdida);
 
-        return view('pessoa_perdida.index', compact('pessoa_perdida'))->with('pessoa_perdida',$pessoa_perdida);
+        return view('pessoa_perdida.index', compact('pessoa_perdida'));
     }
 
     /**
@@ -51,8 +54,6 @@ class pessoaPerdidaController extends Controller
      */
     public function store(StorePessoaPerdida $request)
     {
-
-       
         $p_perdida = new Pessoa_perdida();
         $foto = new foto();
 
@@ -62,6 +63,7 @@ class pessoaPerdidaController extends Controller
         $p_perdida->nacionalidade = $request->input('nacionalidade');
         $p_perdida->naturalidade = $request->input('naturalidade');
         $p_perdida->id_foto = $foto->guardar_foto($request);
+        $p_perdida->estado = 1;
         $p_perdida->save();
         $id=$p_perdida->id_p_perdida;
 
@@ -91,22 +93,32 @@ class pessoaPerdidaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pessoa_perdida $pessoa_perdida)
     {
-        $pessoa_perdida = pessoa_perdida::find($id);
-        return view('admin.pessoa_perdida.edit')->with('pessoa_perdida', $pessoa_perdida);
+        return view('admin.pessoa_perdida.edit', compact('pessoa_perdida'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Pessoa_perdida  $pessoa_perdida
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pessoa_perdida $pessoa_perdida)
     {
+        $pessoa_perdida->nome = $request->input('nome');
+        $pessoa_perdida->sexo = $request->input('sexo');
+        $pessoa_perdida->data_nasc = $request->input('d_nasc');
+        $pessoa_perdida->nacionalidade = $request->input('nacionalidade');
+        $pessoa_perdida->naturalidade = $request->input('naturalidade');
+        $pessoa_perdida->save();
+        return redirect('/editar')->with('sucess', 'created successfully!');
+    }
 
+    public function act(Request $request, $id)
+    {
+        return 'sdfsdf';
     }
 
     /**

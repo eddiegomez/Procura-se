@@ -56,7 +56,7 @@
                     map: map,
                     position: currentLocation,
                 });
-                infoWindow.setContent('<span>esta é a sua localização actual</span>');
+                infoWindow.setContent('<span>O centro encontra-se aqui</span>');
                 infoWindow.open(map, marker);
 
             });
