@@ -52,8 +52,8 @@
                     zoom: 13.5
                 });
                 loadLocations();
-            //    infoWindow.setContent('<span>Esta é a sua localização actual</span>');
-              //  infoWindow.open(map, marker);
+                infoWindow.setContent('<span>Esta é a sua localização actual</span>');
+                infoWindow.open(map, marker);
 
             });
         }
