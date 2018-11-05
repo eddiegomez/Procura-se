@@ -92,12 +92,12 @@
                                 <div class="row">
                                 <div class="col-sm-4" style="float: right;">
                                     <center>
-                                        <label>Contributo</label>
+                                        <label>Caso</label>
                                     <div class="card" style="width: 25rem; border-radius: 2px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0);">
-                                    <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
+                                    <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$pessoa_perdida->nome_foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
                                         <div class="card-body" id="pesquisar">
-                                            <h2 class=""></h2>
-                                            <h5 class="card-text">Idade:</h5>
+                                            <h2 class="">{{$pessoa_perdida->nome}}</h2>
+                                            <h5 class="card-text">{{\Laravel_Learn\Pessoa_perdida::calcularIdade($pessoa_perdida->data_nasc)}} anos de idade</h5>
                                             <h5 class="card-text" style="color: gray"></h5>
                                         </div>
                                        
@@ -105,16 +105,28 @@
                                     </center>
                                 <div class="clearfix"></div>
                             </div>
-                                <div class="col-sm-8" style="float: right;">
+                                <div class="col-sm-8">
+                                    <label>Contributo</label>
                                     <form method="POST" action="/pessoa_perdida" enctype="multipart/form-data">
                                             @csrf 
-                                            <div class="col-md-12">
+                                            <div class="col-md-12" style="top: -25px">
                                                 <div class="form-group">
-                                                    <label>Contributo</label>
-                                                    <textarea rows="7" name="obs" class="form-control" placeholder="adicione aqui qualquer informação que possa ajudar a localizar"></textarea>
+                                                    
+                                                    <textarea rows="5" name="obs" class="form-control" placeholder="adicione aqui qualquer informação que possa ajudar a localizar"></textarea>
+                                                    
                                                 </div>
+                                                <button type="submit" class="btn btn-info btn-fill pull-right" style="top:10px; bottom: 10px; position: relative; ">Comentar</button>
+                                                
                                             </div>
-                                        <div class="clearfix"></div>
+                                            <div class="col-md-12">
+                                                @foreach($contributos as $contributo)
+                                                    <div class="well form-group">
+                                                        <h4>{{$contributo->content}}</h4>
+                                                        <small style="color: gray">{{$contributo->created_at}}</small>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+
                                     </form>
                                 </div>
                             </div>

@@ -63,7 +63,16 @@ class contributoController extends Controller
             ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
             ->select('pessoa_perdida.*', 'contributos.*','foto.nome_foto')
             ->where('pessoa_perdida.id', '=', $id);*/
-        return view('pessoa_perdida.contributos');
+
+            $pessoa_perdida = DB::table('pessoa_perdida')
+            ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
+            ->select('pessoa_perdida.*','foto.*')
+            ->where('pessoa_perdida.id_p_perdida', "$id")
+            ->first();
+
+            $contributos = DB::table('contributos')->where('contributos.id_p_perdida', "$id")->get();
+
+        return view('pessoa_perdida.contributos', compact('pessoa_perdida','contributos'));
     }
 
     /**
