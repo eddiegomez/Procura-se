@@ -13,6 +13,9 @@
         <div class="row w-100">
           <div class="col-lg-4 mx-auto">
             <div class="auto-form-wrapper">
+              <div class="header">
+                <center><h4 class="title" style="color: gray">PROCURA-SE</h4></center>                
+              </div>
               <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">

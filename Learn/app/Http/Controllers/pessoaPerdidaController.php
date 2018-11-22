@@ -29,9 +29,6 @@ class pessoaPerdidaController extends Controller
             ->orderBy('id_p_perdida','desc')
             ->paginate(6);
 
-           
-//        $pessoa_perdida = Pessoa_perdida::orderBy('id_p_perdida','desc')->paginate(3);
-           // dd($pessoa_perdida);
 
         return view('pessoa_perdida.index', compact('pessoa_perdida'));
     }
@@ -43,7 +40,8 @@ class pessoaPerdidaController extends Controller
      */
     public function create()
     {
-        return view('pessoa_perdida.create');
+        $pessoa_perdida = DB::table('pessoa_perdida')->get();
+        return view('pessoa_perdida.create', compact('pessoa_perdida'));
     }
 
     /**

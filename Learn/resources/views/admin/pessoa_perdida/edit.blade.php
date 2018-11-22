@@ -25,27 +25,27 @@
                     </a>
                 </li>
                 <li class="active">
-                    <a href="/user">
-                        <i class="pe-7s-map-marker"></i>
+                    <a href="#">
+                        <i class="pe-7s-menu"></i>
                         <p>Pessoas perdidas</p>
                     </a>
                 </li>
-                <li class="">
+                <li>
                     <a href="/centro">
-                        <i class="pe-7s-user"></i>
+                        <i class="pe-7s-map-marker"></i>
                         <p>Centros</p>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-users"></i>
                         <p>Ususarios</p>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Minha Conta</p>
+                        <i class="pe-7s-user"></i>
+                        <p>Perfil</p>
                     </a>
                 </li>
                 <li>

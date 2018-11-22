@@ -29,37 +29,7 @@
 
         <ul class="navbar-nav navbar-nav-right">
           
-          <li class="nav-item dropdown d-none d-xl-inline-block">
-            <a class="nav-link" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <span class="profile-text">Olá, Edson Gomes</span>
-              <img class="img-xs rounded-circle" src="/images/foto.jpg" alt="Profile image">
-              <i class="pe-7s-edit"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item p-0">
-                <div class="d-flex border-bottom">
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-edit"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                    <i class="pe-7s-id"></i>
-                  </div>
-                  <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                    <i class="pe-7s-users"></i>
-                  </div>
-                </div>
-              </a>
-              <a class="dropdown-item mt-2">
-                Editar conta
-              </a>
-              <a class="dropdown-item">
-                Lista de Ajudas
-              </a>
-              <a class="dropdown-item">
-                Sign Out
-              </a>
-            </div>
-          </li>
+          
         </ul>
       </div>
     </nav>

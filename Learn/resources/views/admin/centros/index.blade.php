@@ -2,7 +2,7 @@
 @section('title','Procura-se (Administrativo)')
 
 
-<div class="wrapper">
+<div class="wrapper" style="background-color: #F8F8FF">
     <div class="sidebar" data-color="azure" data-image="/images/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->

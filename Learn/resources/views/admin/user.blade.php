@@ -1,8 +1,8 @@
 @extends('layouts.app') 
 @section('title','Procura-se (Administrativo)')
-            @yield('content')
+@yield('content')
 
-<div class="wrapper">
+<div class="wrapper" style="background-color: #F8F8FF">
     <div class="sidebar" data-color="azure" data-image="/images/sidebar-5.jpg">
 
     <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
@@ -24,26 +24,26 @@
                 </li>
                 <li class="active">
                     <a href="#">
-                        <i class="pe-7s-map-marker"></i>
+                        <i class="pe-7s-menu"></i>
                         <p>Pessoas perdidas</p>
                     </a>
                 </li>
                 <li>
                     <a href="/centro">
-                        <i class="pe-7s-user"></i>
+                        <i class="pe-7s-map-marker"></i>
                         <p>Centros</p>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-users"></i>
                         <p>Ususarios</p>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="pe-7s-news-paper"></i>
-                        <p>Minha Conta</p>
+                        <i class="pe-7s-user"></i>
+                        <p>Perfil</p>
                     </a>
                 </li>
                 <li>

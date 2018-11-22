@@ -101,8 +101,11 @@ class userController extends Controller
 
     public function contador()
     {
-        $centro = DB::select('SELECT COUNT(id_centro) FROM centro_acolhimento');
-        return view('admin.front-office', compact('centro'));
+        $centro = DB::table('centro_acolhimento')->count();
+        $pessoa_p = DB::table('pessoa_perdida')->where('estado',1)->count();
+        $sucesso = DB::table('pessoa_perdida')->where('estado',0)->count();
+        $users = DB::table('users')->count();
+        return view('admin.front-office', compact('centro','pessoa_p','sucesso','users'));
         //return view('admin.front-office', compact('centro_acolhimento'))->with('centro_acolhimento',$centro);
     }
 }

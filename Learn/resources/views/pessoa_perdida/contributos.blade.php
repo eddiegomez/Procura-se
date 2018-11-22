@@ -68,8 +68,17 @@
       </div>
     </nav>
 
-
-<div class="content" style="left: 5px; position: relative;top: 120PX" style="background-image: url("/images/register.jpg");">
+<br>
+<br>
+<br>
+<br>
+<nav aria-label="breadcrumb" style="left: 20px;position: relative;"> 
+        <ol class="breadcrumb"> 
+            <li class="breadcrumb-item"><a href="/">Home</a></li> 
+            <li class="breadcrumb-item current" aria-current="page">Pessoas perdidas|Contributos</li> 
+        </ol> 
+    </nav>
+<div class="content" style="left: 5px; position: relative;background-image: url("/images/register.jpg");">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -85,20 +94,28 @@
                             @endif
 
                             <div class="header">
-                                <h4 class="title">Painel de Contribuicoes</h4>
+                              <div class="col-sm-4">
+                                <h4 class="title">Pessoa Perdida</h4>
+                              </div>
+                                <div class="col-sm-6" style="">
+                                <h4 class="title">Dar um contributo</h4>
+                                </div>
                             </div>
 
                             <div class="content">
                                 <div class="row">
                                 <div class="col-sm-4" style="float: right;">
-                                    <center>
-                                        <label>Caso</label>
+                                    
+                                     
                                     <div class="card" style="width: 25rem; border-radius: 2px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0);">
+                                        <center>
                                     <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$pessoa_perdida->nome_foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
                                         <div class="card-body" id="pesquisar">
-                                            <h2 class="">{{$pessoa_perdida->nome}}</h2>
+                                            <h2 class="" style="color: gray">{{$pessoa_perdida->nome}}</h2>
                                             <h5 class="card-text">{{\Laravel_Learn\Pessoa_perdida::calcularIdade($pessoa_perdida->data_nasc)}} anos de idade</h5>
-                                            <h5 class="card-text" style="color: gray"></h5>
+                                            <h5 class="card-text"><i class="pe-7s-date"></i> {{\Laravel_Learn\Pessoa_perdida::calcularDias($pessoa_perdida->created_at)}}</h5>
+                                            <h5 class="card-text" style="color: gray">{{$pessoa_perdida->nacionalidade}}</h5>
+                                            <h5 class="card-text" style="color: gray">{{$pessoa_perdida->naturalidade}}</h5>
                                         </div>
                                        
                                     </div>
@@ -106,13 +123,16 @@
                                 <div class="clearfix"></div>
                             </div>
                                 <div class="col-sm-8">
-                                    <label>Contributo</label>
-                                    <form method="POST" action="/pessoa_perdida" enctype="multipart/form-data">
+                                    
+
+
+                                    <form method="POST" action="/contribuir" enctype="multipart/form-data">
                                             @csrf 
                                             <div class="col-md-12" style="top: -25px">
                                                 <div class="form-group">
                                                     
-                                                    <textarea rows="5" name="obs" class="form-control" placeholder="adicione aqui qualquer informação que possa ajudar a localizar"></textarea>
+                                                    <textarea rows="5" name="content" class="form-control" placeholder="adicione aqui qualquer informação que possa ajudar a localizar"></textarea>
+                                                    <input type="number" name="id" class="hidden" value="{{$pessoa_perdida->id_p_perdida}}">
                                                     
                                                 </div>
                                                 <button type="submit" class="btn btn-info btn-fill pull-right" style="top:10px; bottom: 10px; position: relative; ">Comentar</button>

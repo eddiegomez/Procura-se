@@ -49,14 +49,59 @@
     </nav>
 <br> <br> <br>
 
-
-
+<div class="row" style="top: -8px;left: -0.5px;right: -6px; position: relative;">
+<div class="col-lg-12" style="top: 0px">
+                    <div class="card" style=" box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5);">
+                        <div class="body">
+                            <div id="carousel-example-generic_2" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic_2" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic_2" data-slide-to="1"></li>
+                                </ol>
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        
+                                        <img src="/images/14.jpg" style="width: 100%; height: 250px; filter:blur(1px)" />
+                                        <div class="carousel-caption">
+                                            <h3>Registar pessoa perdida</h3>
+                                            <a href="/pessoa_perdida/create/" class="nav-link">
+                                                <button type="button" class="btn btn-primary">Registar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <img src="/images/13.jpg"  style="width: 100%; height: 250px;filter:blur(1px)" />
+                                        <div class="carousel-caption">
+                                            <h3>Second slide label</h3>
+                                            <a href="/pessoa_perdida/create/" class="nav-link">
+                                                <button type="button" class="btn btn-primary">Registar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-example-generic_2" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic_2" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# With Captions -->
+</div>
 <center>
 <center>
-<div class="row" style="position: relative; margin: 120px" >
+<div class="row">
     @foreach($pessoa_perdida as $p_perdida)
     <div class="col-sm-4">
-        <div class="card" style="width: 18rem; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
+        <div class="card" style="width: 18rem; height: 400px; border-radius: 15px; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
         <img class="card-img-top rounded-circle" src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}" style=" width: 180px; height: 180px; TOP: 10PX; position: relative;">
             <div class="card-body" id="pesquisar">
                 <h2 class="">{{$p_perdida->nome}}</h2>
@@ -70,7 +115,7 @@
     <!-- Modal -->
         <div class="modal" id="exampleModalCenter{{$p_perdida->id_p_perdida}}" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document"  >
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Informação detalhada da pessoa
@@ -82,7 +127,7 @@
                     <div class="modal-body">
                         <div>
                             <img class="card-img-top" src="/imgs_p_perdidas/{{$p_perdida->nome_foto}}"
-                                 style=" width: 400px; height: 300px;">
+                                 style=" width: 200px; height: 200px;">
                         </div>
                         <div class=""><CODE><h1>{{$p_perdida->nome}}</h1></CODE>
                         </div>
@@ -91,17 +136,17 @@
                                 {{$p_perdida->data_nasc}}
                             </h4>
                         </div>
-                    <h5 class="">{{$p_perdida->designacao}}</h5>
+                    <h5 class=""><a href="">{{$p_perdida->designacao}}</a></h5>
 
                         <h4>
-                                {{ \Laravel_Learn\Pessoa_perdida::calcularDias($p_perdida->created_at) }} dias.
+                                {{ \Laravel_Learn\Pessoa_perdida::calcularDias($p_perdida->created_at) }}
                             </h4>
                         
 
                     </div>
                     <div class="modal-footer">
                         <a href="/contribuir/{{$p_perdida->id_p_perdida}}/edit" class="nav-link">
-                            <button type="button" class="btn btn-primary">Dar contributo</button>
+                            <button type="button" class="btn btn-primary">Comentar</button>
                         </a>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <a href="/locations/{{$p_perdida->id_localizacao}}" class="nav-link">

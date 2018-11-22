@@ -92,7 +92,7 @@
                             var nome = localDaBaseDeDados.nome_localizacao;
                             var template =`
                             <div>
-                                <strong> ${nome} </strong>
+                                <strong> ${nome_localizacao} </strong>
                                 <br>
                                 <text>distancia: ${distancia} - ${tempo}</text>
                             </div>

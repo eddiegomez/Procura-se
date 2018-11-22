@@ -4,6 +4,7 @@ namespace Laravel_Learn\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel_Learn\pessoa_perdida;
+use Laravel_Learn\contributo;
 use Illuminate\Support\Facades\DB;
 
 class contributoController extends Controller
@@ -36,7 +37,25 @@ class contributoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contributo = new contributo();
+
+        $contributo->content = $request->input('content');
+        $contributo->id_p_perdida = $request->input('id');
+        $id      = $request->input('id');
+        $contributo->save();
+
+
+        $pessoa_perdida = DB::table('pessoa_perdida')
+        ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
+        ->select('pessoa_perdida.*','foto.*')
+        ->where('pessoa_perdida.id_p_perdida', "$id")
+        ->first();
+
+        $contributos = DB::table('contributos')->where('contributos.id_p_perdida', "$id")
+        ->orderBy('created_at','desc')
+        ->get();
+
+        return view('pessoa_perdida.contributos', compact('pessoa_perdida', 'contributos'));
     }
 
     /**
@@ -58,19 +77,16 @@ class contributoController extends Controller
      */
     public function edit($id)
     {
-        //$pessoa_perdida = DB::select('select * from pessoa_perdida p, contributos c where p.id_p_perdida = ""$id"');
-        /*$pessoa_perdida = DB::table('pessoa_perdida')
-            ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
-            ->select('pessoa_perdida.*', 'contributos.*','foto.nome_foto')
-            ->where('pessoa_perdida.id', '=', $id);*/
 
-            $pessoa_perdida = DB::table('pessoa_perdida')
-            ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
-            ->select('pessoa_perdida.*','foto.*')
-            ->where('pessoa_perdida.id_p_perdida', "$id")
-            ->first();
+        $pessoa_perdida = DB::table('pessoa_perdida')
+        ->join('foto', 'foto.id_foto', '=', 'pessoa_perdida.id_foto')
+        ->select('pessoa_perdida.*','foto.*')
+        ->where('pessoa_perdida.id_p_perdida', "$id")
+        ->first();
 
-            $contributos = DB::table('contributos')->where('contributos.id_p_perdida', "$id")->get();
+        $contributos = DB::table('contributos')->where('contributos.id_p_perdida', "$id")
+        ->orderBy('created_at','desc')
+        ->get();
 
         return view('pessoa_perdida.contributos', compact('pessoa_perdida','contributos'));
     }

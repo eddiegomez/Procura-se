@@ -14,7 +14,7 @@
 @section('content')
 
 
-
+<div class="content">
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center d-flex justify-content-center">
         <a href="#" class="nav-link" style="color: white;"><h4>PROCURA-SE</h4></a>
@@ -67,12 +67,15 @@
         </ul>
       </div>
     </nav>
-
-
-<div class="content" style="left: 180px; position: relative;top: 120PX" style="background-image: url("/images/register.jpg");">
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="content"  style="background-image: url("/images/register.jpg");">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-9" style="position: relative;left: 180px">
                         <div class="card">
                             @if($errors->any())
                                 <div class="alert alert-danger">
@@ -99,7 +102,6 @@
                                         </div>
 
                                         <div class="col-md-4">
-
                                             <div class="form-group">
                                                 <label>Sexo</label>
                                                 <select class="form-control" name="sexo" style="height: 34px">
@@ -112,18 +114,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Data de Nascimento</label>
-
                                                 <input type="date" class="form-control" placeholder="DD/MM/AAAA" name="d_nasc">
-
                                             </div>
                                         </div>
-                                    
-
                                 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Nacionalidade</label>
-
                                                 <input type="text" class="form-control" placeholder="Nacionalidade"  name="nacionalidade">
 
                                             </div>
@@ -137,19 +134,13 @@
 
                                             </div>
                                         </div>
-
                                         
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Foto</label>
+                                                <h4><i class="pe-7s-cloud-upload"></i> <label>Foto</label></h4>
                                                 <input type="file" name="foto" class="form-control" style="height: 43px">
                                             </div>
                                         </div>  
-                                    
-
-                                       
-            
-
                                     
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -157,9 +148,9 @@
                                                 <textarea rows="7" name="obs" class="form-control" placeholder="informação adicional sobre a pessoa perdida"></textarea>
                                             </div>
                                         </div>
-                                  
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">Gravar</button>
-
+                                    
+                                    <button type="submit" class="btn btn-info btn-fill pull-right" id="destaque">Gravar</button>
+                                    
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -167,6 +158,36 @@
                     </div>
                 </div>
             </div>
+            
+            <script type="text/javascript">
+                document.querySelector('#destaque').onclick = function() {
+                    alert("kme");
+                };
+            </script>
+            <!-- Modal -->
+        <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Não faz parte da lista a baixo??</h2>
+                    </div>
+                    <div class="modal-body">
+                    @foreach($pessoa_perdida as $p_perdida)
+
+                    @endforeach
+                    </div>
+                    <div class="modal-footer">
+                        
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <a href="" class="nav-link">
+                            <button type="button" class="btn btn-primary">Ver no Mapa</button>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
 
        
